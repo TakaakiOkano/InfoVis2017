@@ -33,7 +33,7 @@
       function AreaTriangle(v0,v1,v2){
       var v01 = new Vec3(v1.x-v0.x,v1.y-v0.y,v1.z-v0.z);
       var v02 = new Vec3(v2.x-v0.x,v2.y-v0.y,v2.z-v0.z);
-      var Area = Math.sqrt(Math.pow(v01.y*v02.z-v01.z*v02.y,2)+Math.pow(v01.z*v02.x-v01.x*v02.z,2)+Math.pow(v01.x*v02.y-v01.y*v02.x,2));
+      var Area = (Math.sqrt(Math.pow(v01.y*v02.z-v01.z*v02.y,2)+Math.pow(v01.z*v02.x-v01.x*v02.z,2)+Math.pow(v01.x*v02.y-v01.y*v02.x,2)))/2;
       return Area;
       }
       
