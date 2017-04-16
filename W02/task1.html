@@ -27,9 +27,7 @@
       {
       var mid=0;
 
-      if(this.x >= this.y && this.z >= this.x){
-      mid = this.x;
-      }else if(this.x <= this.y && this.z <= this.x){
+      if((this.x >= this.y && this.z >= this.x) || (this.x <= this.y && this.z <= this.x)){
       mid = this.x; 
       }
       if((this.y >= this.x && this.z >= this.y) || (this.y <= this.x && this.z <= this.y)){
