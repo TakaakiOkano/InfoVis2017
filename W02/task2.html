@@ -16,8 +16,11 @@
       x2:<input type="number" name="numx2" value="" >
       y2:<input type="number" name="numy2" value="" >
       z2:<input type="number" name="numz2" value="" ><br>
+      <input type="button" value="Resetv0" onclick="clrv0()"><br>
+      <input type="button" value="Resetv1" onclick="clrv1()"><br>
+      <input type="button" value="Resetv2" onclick="clrv2()"><br>
       <input type="button" value="Result" onclick="cal()"><br>
-      <input type="button" value="Reset" onclick="clr()"><br>
+      
     </form>
     <script>
       Vec3 = function(x,y,z)
@@ -35,10 +38,20 @@
       }
       
 
-      function clr(){
+      function clrv0(){
       document.js.numx0.value="";
-      document.js.numy0.value=""
-      document.js.numz0.value=""
+      document.js.numy0.value="";
+      document.js.numz0.value="";
+      }
+      function clrv1(){
+      document.js.numx1.value="";
+      document.js.numy1.value="";
+      document.js.numz1.value="";
+      }
+      function clrv2(){
+      document.js.numx1.value="";
+      document.js.numy1.value="";
+      document.js.numz1.value="";
       }
 
       function cal(){
@@ -59,7 +72,8 @@
       var v1 = new Vec3(x1,y1,z1);
       var v2 = new Vec3(x2,y2,z2);
       var S = AreaTriangle(v0,v1,v2);
-      alert("v0:x0="+x0+",y0="+y0+",z0="+z0<br>+"v1:x1="+x1+",y1="+y1+",z1="+z1<br>+"v2:x2="+x2+",y2="+y2+",z2="+z2<br>+"AreaTriangle="+S);
+      alert("v0:x0="+x0+",y0="+y0+",z0="+z0);
+      alert("v1:x1="+x1+",y1="+y1+",z1="+z1+"v2:x2="+x2+",y2="+y2+",z2="+z2+"AreaTriangle="+S);
       }
 </script>
 </body>
