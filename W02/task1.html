@@ -25,7 +25,7 @@
       
       Vec3.prototype.mid = function()
       {
-      var mid;
+      var mid=0;
       
       if((this.x >= this.y && this.z >= this.x) || (this.x <= this.y && this.z <= this.x)){
       mid = this.x; 
@@ -52,15 +52,15 @@
       }
 	       
 	       
-	       var x = 5,y=4;z=8;//(input values)
+	       var x =5,y=4;z=8;//(input values)
 	       var v = new Vec3(x,y,z);
 	       var min = v.min();//4
 	       var mid = v.mid();//5
 	       var max = v.max();//8
-	       document.write("x="x,"y="y,"z="z);
-	       document.write("min="min);
-	       document.write("mid="mid);
-	       document.write("max="max);
+	       document.write("x="+x+",y="+y,+",z="+z);
+	       document.write("min="+min);
+	       document.write("mid="+mid);
+	       document.write("max="+max);
 	       
 
 </script>
