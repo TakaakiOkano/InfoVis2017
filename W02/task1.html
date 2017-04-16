@@ -9,7 +9,7 @@
       this.x =x;
       this.y =y;
       this.z =z;
-      }
+      };
       
       Vec3.prototype.min = function()
       {
@@ -26,19 +26,7 @@
       Vec3.prototype.mid = function()
       {
       var mid=0;
-      
-      if(this.x >= this.y && this.z >= this.x){
-      mid = this.x;
-      }else if(this.x <= this.y && this.z <= this.x){
-      mid = this.x; 
-      }
-
-      if((this.y >= this.x && this.z >= this.y) || (this.y <= this.x && this.z <= this.y)){
-      mid = this.y;
-      }
-      if((this.z >= this.x && this.y >= this.z) || (this.z <= this.x && this.y <= this.z)){
-      mid = this.z;
-      }								  
+      					  
       return mid;
       };
 	
@@ -55,7 +43,7 @@
       };
 	       
 	       
-	       var x =5,y=4;z=8;//(input values)
+	       var x =5,y=4;z=8;
 	       var v = new Vec3(x,y,z);
 	       var min = v.min();
 	       var mid = v.mid();
