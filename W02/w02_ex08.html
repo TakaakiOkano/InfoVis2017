@@ -4,9 +4,11 @@
   </head>
   <body>
     <input type="button"
-	   onclick="event()"
-	   value = "Click Me"/>
+	   value = "Click Me"
+	   id = "click_me"/>
     <script>
+      var element = document.getElementById('click_me');
+      element.addEventListener('click',event);
       function event(){window.alert('Clicked!'); }
     </script>
   </body>
