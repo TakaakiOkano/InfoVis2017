@@ -16,7 +16,7 @@
       x2:<input type="number" name="numx2" value="" >
       y2:<input type="number" name="numy2" value="" >
       z2:<input type="number" name="numz2" value="" ><br>
-      <input type="button" value="計算" onclick="cal()"><br>
+      <input type="button" value="Result" onclick="cal()"><br>
       <input type="button" value="Reset" onclick="clr()"><br>
     </form>
     <script>
@@ -34,22 +34,35 @@
       return Area;
       }
       
-      var x0,y0,z0;
-      var x1,y1,z1;
-      var x2,y2,z2;
-      var v0 = new Vec3(x0,y0,z0);
-      var v1 = new Vec3(x1,y1,z1);
-      var v2 = new Vec3(x2,y2,z2);
-      var S = AreaTriangle(v0,v1,v2);
-      document.write("x0="+x0+",y0="+y0+",z0="+z0+"\n");
-      document.write("x1="+x1+",y1="+y1+",z1="+z1+"\n");
-      document.write("x2="+x2+",y2="+y2+",z2="+z2+"\n");
-      
 
       function clr(){
       document.js.numx0.value="";
       document.js.numy0.value=""
       document.js.numz0.value=""
+      }
+
+      function cal(){
+    
+      var x0,y0,z0;
+      x0=document.js.numx0.value;
+      y0=document.js.numy0.value;
+      z0=document.js.numz0.value;
+      var x1,y1,z1;
+      x1=document.js.numx1.value;
+      y1=document.js.numy1.value;
+      z1=document.js.numz1.value;
+      var x2,y2,z2;
+      x2=document.js.numx2.value;
+      y2=document.js.numy2.value;
+      z2=document.js.numz2.value;
+      var v0 = new Vec3(x0,y0,z0);
+      var v1 = new Vec3(x1,y1,z1);
+      var v2 = new Vec3(x2,y2,z2);
+      var S = AreaTriangle(v0,v1,v2);
+      document.write("x0="+x0+",y0="+y0+",z0="+z0);<br>
+      document.write("x1="+x1+",y1="+y1+",z1="+z1);<br>
+      document.write("x2="+x2+",y2="+y2+",z2="+z2);<br>
+      document.write("AreaTriangle="+S);
       }
 </script>
 </body>
