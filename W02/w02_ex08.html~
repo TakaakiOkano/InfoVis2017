@@ -4,10 +4,10 @@
   </head>
   <body>
 <input type="button"
-       onclick="event()"
+       onclick="window.alert('Clicked!')"
        value = "Click Me"/>
     <script>
-      function event(){window.alert('Clicked!');}    
+    
 	    
 </script>
 </body>
