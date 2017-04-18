@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>W02: task1</title>
+  </head>
+  <body>
+    <form name="js">
+      v0<br>
+      x0:<input type="number" name="numx0" value="" >
+      y0:<input type="number" name="numy0" value="" >
+      z0:<input type="number" name="numz0" value="" ><br>
+      v1<br>
+      x1:<input type="number" name="numx1" value="" >
+      y1:<input type="number" name="numy1" value="" >
+      z1:<input type="number" name="numz1" value="" ><br>
+      v2<br>
+      x2:<input type="number" name="numx2" value="" >
+      y2:<input type="number" name="numy2" value="" >
+      z2:<input type="number" name="numz2" value="" ><br>
+      <input type="button" value="Resetv0" onclick="clrv0()"><br>
+      <input type="button" value="Resetv1" onclick="clrv1()"><br>
+      <input type="button" value="Resetv2" onclick="clrv2()"><br>
+      <input type="button" value="Result" onclick="cal()"><br>
+      
+    </form>
+    <script>
+      Vec3 = function(x,y,z)
+      {
+      this.x =x;
+      this.y =y;
+      this.z =z;
+      };
+      
+      function AreaTriangle(v0,v1,v2){
+      var v01 = new Vec3(v1.x-v0.x,v1.y-v0.y,v1.z-v0.z);
+      var v02 = new Vec3(v2.x-v0.x,v2.y-v0.y,v2.z-v0.z);
+      var Area = (Math.sqrt(Math.pow(v01.y*v02.z-v01.z*v02.y,2)+Math.pow(v01.z*v02.x-v01.x*v02.z,2)+Math.pow(v01.x*v02.y-v01.y*v02.x,2)))/2;
+      return Area;
+      }
+      
+
+      function clrv0(){
+      document.js.numx0.value="";
+      document.js.numy0.value="";
+      document.js.numz0.value="";
+      }
+      function clrv1(){
+      document.js.numx1.value="";
+      document.js.numy1.value="";
+      document.js.numz1.value="";
+      }
+      function clrv2(){
+      document.js.numx2.value="";
+      document.js.numy2.value="";
+      document.js.numz2.value="";
+      }
+
+      function cal(){
+    
+      var x0,y0,z0;
+      x0=document.js.numx0.value;
+      y0=document.js.numy0.value;
+      z0=document.js.numz0.value;
+      var x1,y1,z1;
+      x1=document.js.numx1.value;
+      y1=document.js.numy1.value;
+      z1=document.js.numz1.value;
+      var x2,y2,z2;
+      x2=document.js.numx2.value;
+      y2=document.js.numy2.value;
+      z2=document.js.numz2.value;
+      var v0 = new Vec3(x0,y0,z0);
+      var v1 = new Vec3(x1,y1,z1);
+      var v2 = new Vec3(x2,y2,z2);
+      var S = AreaTriangle(v0,v1,v2);
+      alert("v0:("+x0+","+y0+","+z0+")\nv1:("+x1+","+y1+","+z1+")\nv2:("+x2+","+y2+","+z2+")\nAreaTriangle="+S);
+      }
+</script>
+</body>
+</html>
+
+
