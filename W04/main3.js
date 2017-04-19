@@ -35,14 +35,15 @@ function main3()
     var torus = new THREE.Mesh( geometry, material );
     scene.add( torus );
 
+    
     loop();
 
     function loop()
     {
         requestAnimationFrame( loop );
-        cube.rotation.x += 0.001;
-        cube.rotation.y += 0.001;
-	cube.rotation.z += 0.001;
+        torus.rotation.x += 0.001;
+        torus.rotation.y += 0.001;
+	torus.rotation.z += 0.001;
         renderer.render( scene, camera );
     }
 }
