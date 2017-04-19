@@ -22,11 +22,18 @@ function main3()
     renderer.setSize( width, height );
     document.body.appendChild( renderer.domElement );
 
+    /*
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     //var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-    var material = new THREE.MeshLambertMaterial( { color: 0x555555   } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xffffff   } );
     var cube = new THREE.Mesh( geometry, material );
-    scene.add( circle );
+    scene.add( cube );
+    */
+
+    var geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+    var material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+    var torus = new THREE.Mesh( geometry, material );
+    scene.add( torus );
 
     loop();
 
