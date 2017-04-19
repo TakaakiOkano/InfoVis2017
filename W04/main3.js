@@ -14,8 +14,8 @@ function main3()
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
 
-    var light = new THREE.PointLight(0xffff00);
-    light.position.set(1,10,10);
+    var light = new THREE.PointLight(0xffffff);
+    light.position.set(1,1,10);
     scene.add(light);
 
     var renderer = new THREE.WebGLRenderer();
