@@ -1,14 +1,14 @@
 function main3()
 {
-    var width = 2000;
-    var height = 2000;
+    var width =  500;
+    var height = 500;
 
     var scene = new THREE.Scene();
 
     var fov = 45;
     var aspect = width / height;
     var near = 1;
-    var far = 1000;
+    var far = 3000;
     
     var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.set( 0, 0, 5 );
@@ -30,7 +30,7 @@ function main3()
     scene.add( cube );
     */
 
-    var geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+    var geometry = new THREE.TorusGeometry( 1, 1);
     var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
     var torus = new THREE.Mesh( geometry, material );
     scene.add( torus );
