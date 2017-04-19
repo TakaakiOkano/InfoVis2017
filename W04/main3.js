@@ -41,9 +41,9 @@ function main3()
     function loop()
     {
         requestAnimationFrame( loop );
-        torus.rotation.x += 0.01;
-        torus.rotation.y += 0.01;
-	torus.rotation.z += 0.01;
+        torus.rotation.x += 0.1;
+        torus.rotation.y += 0.1;
+	torus.rotation.z += 0.1;
         renderer.render( scene, camera );
     }
 }
