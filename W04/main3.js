@@ -31,7 +31,7 @@ function main3()
     */
 
     var geometry = new THREE.TorusGeometry( 1, 1);
-    var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+    var material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
     var torus = new THREE.Mesh( geometry, material );
     scene.add( torus );
 
