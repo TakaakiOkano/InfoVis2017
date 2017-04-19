@@ -30,8 +30,8 @@ function main3()
     scene.add( cube );
     */
 
-    var geometry = new THREE.TorusGeometry( 1, 0.3);
-    var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+    var geometry = new THREE.TorusGeometry( 2, 0.3);
+    var material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
     var torus = new THREE.Mesh( geometry, material );
     scene.add( torus );
 
