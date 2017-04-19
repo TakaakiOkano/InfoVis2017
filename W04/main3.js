@@ -35,6 +35,11 @@ function main3()
     var torus = new THREE.Mesh( geometry, material );
     scene.add( torus );
 
+    var geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
+    //var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+    var material1 = new THREE.MeshLambertMaterial( { color: 0xffffff   } );
+    var cube1 = new THREE.Mesh( geometry1, material1 );
+    scene.add( cube );
     
     loop();
 
@@ -44,6 +49,9 @@ function main3()
         torus.rotation.x += 0.01;
         torus.rotation.y += 0.01;
 	torus.rotation.z += 0.01;
+	cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+	cube.rotation.z += 0.01;
         renderer.render( scene, camera );
     }
 }
