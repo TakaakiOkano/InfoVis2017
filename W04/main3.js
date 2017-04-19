@@ -14,8 +14,8 @@ function main3()
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
 
-    var light = new THREE.PointLight(0xffffff);
-    light.position.set(1,1,1);
+    var light = new THREE.PointLight(0xffff00);
+    light.position.set(1,10,10);
     scene.add(light);
 
     var renderer = new THREE.WebGLRenderer();
@@ -30,8 +30,8 @@ function main3()
     scene.add( cube );
     */
 
-    var geometry = new THREE.TorusGeometry( 100, 0.1);
-    var material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+    var geometry = new THREE.TorusGeometry( 1, 0.1);
+    var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
     var torus = new THREE.Mesh( geometry, material );
     scene.add( torus );
 
