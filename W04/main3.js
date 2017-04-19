@@ -14,7 +14,7 @@ function main()
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
 
-    var light = new THREE.PointLight(0xaaaaaa);
+    var light = new THREE.PointLight(0xfffffff);
     light.position.set(1,1,1);
     scene.add(light);
 
@@ -24,7 +24,7 @@ function main()
 
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     //var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-    var material = new THREE.MeshLambertMaterial( { color: 0xffffff   } );
+    var material = new THREE.MeshLambertMaterial( { color: 0x222222   } );
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
@@ -35,6 +35,7 @@ function main()
         requestAnimationFrame( loop );
         cube.rotation.x += 0.001;
         cube.rotation.y += 0.001;
+	cube.rotation.z += 0.001;
         renderer.render( scene, camera );
     }
 }
