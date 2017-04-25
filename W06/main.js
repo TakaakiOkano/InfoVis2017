@@ -27,14 +27,14 @@ function main()
     var faces =    [ [0,1,2]];//,[0,2,3],[4,5,1],[4,1,0],[7,6,5],[7,5,4],[3,2,6],[3,6,7],[4,0,3],[4,3,7],[2,1,5],[2,5,6] ];  //f0:v0,v1,v2
     
     var v0 = new THREE.Vector3().fromArray(vertices[0]);
-    var v1 = new THREE.Vector3().fromArray(vertices[1]);
+    /*var v1 = new THREE.Vector3().fromArray(vertices[1]);
     var v2 = new THREE.Vector3().fromArray(vertices[2]);
     var v3 = new THREE.Vector3().fromArray(vertices[3]);
     var v4 = new THREE.Vector3().fromArray(vertices[4]);
     var v5 = new THREE.Vector3().fromArray(vertices[5]);
     var v6 = new THREE.Vector3().fromArray(vertices[6]);
     var v7 = new THREE.Vector3().fromArray(vertices[7]);
-    var v8 = new THREE.Vector3().fromArray(vertices[8]);
+    var v8 = new THREE.Vector3().fromArray(vertices[8]);*/
     var id = faces[0];
     //var id1 = faces[1];
     var f0 = new THREE.Face3(id[0],id[1],id[2]);
