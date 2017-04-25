@@ -30,11 +30,11 @@ function main()
     var v1 = new THREE.Vector3().fromArray(vertices[1]);
     var v2 = new THREE.Vector3().fromArray(vertices[2]);
     var v3 = new THREE.Vector3().fromArray(vertices[3]);
-    var v4 = new THREE.Vector3().fromArray(vertices[4]);
+    /*var v4 = new THREE.Vector3().fromArray(vertices[4]);
     var v5 = new THREE.Vector3().fromArray(vertices[5]);
     var v6 = new THREE.Vector3().fromArray(vertices[6]);
     var v7 = new THREE.Vector3().fromArray(vertices[7]);
-    var v8 = new THREE.Vector3().fromArray(vertices[8]);
+    var v8 = new THREE.Vector3().fromArray(vertices[8]);*/
     var id = faces;
     var f0 = new THREE.Face3(id[0][0],id[0][1],id[0][2]);
     var f1 = new THREE.Face3(id[1][0],id[1][1],id[1][2]);
@@ -55,8 +55,8 @@ function main()
     geometry.vertices.push(v1);
     geometry.vertices.push(v2);
     geometry.vertices.push(v3);
-    geometry.vertices.push(v4);
-    geometry.vertices.push(v5);
+    //geometry.vertices.push(v4);
+    //geometry.vertices.push(v5);
     /*geometry.vertices.push(v6);
     geometry.vertices.push(v7);
     geometry.vertices.push(v8);*/
