@@ -89,7 +89,7 @@ function main()
     geometry.faces[10].color = new THREE.Color(1,0,0);
     geometry.faces[11].color = new THREE.Color(1,0,0); */
     
-
+    material.side = THREE.DoubleSide;
     //
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
