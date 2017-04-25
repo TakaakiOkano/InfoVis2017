@@ -30,15 +30,15 @@ function main()
     var v1 = new THREE.Vector3().fromArray(vertices[1]);
     var v2 = new THREE.Vector3().fromArray(vertices[2]);
     var v3 = new THREE.Vector3().fromArray(vertices[3]);
-    /*var v4 = new THREE.Vector3().fromArray(vertices[4]);
+    var v4 = new THREE.Vector3().fromArray(vertices[4]);
     var v5 = new THREE.Vector3().fromArray(vertices[5]);
-    var v6 = new THREE.Vector3().fromArray(vertices[6]);
+    /*var v6 = new THREE.Vector3().fromArray(vertices[6]);
     var v7 = new THREE.Vector3().fromArray(vertices[7]);
     var v8 = new THREE.Vector3().fromArray(vertices[8]);*/
     var id = faces;
     var f0 = new THREE.Face3(id[0][0],id[0][1],id[0][2]);
     var f1 = new THREE.Face3(id[1][0],id[1][1],id[1][2]);
-    //var f2 = new THREE.Face3(id[2][0],id[2][1],id[2][2]);
+    var f2 = new THREE.Face3(id[2][0],id[2][1],id[2][2]);
     /*var f3 = new THREE.Face3(id[3][0],id[3][1],id[3][2]);
     var f4 = new THREE.Face3(id[4][0],id[4][1],id[4][2]);
     var f5 = new THREE.Face3(id[5][0],id[5][1],id[5][2]);
@@ -55,14 +55,14 @@ function main()
     geometry.vertices.push(v1);
     geometry.vertices.push(v2);
     geometry.vertices.push(v3);
-    //geometry.vertices.push(v4);
-    //geometry.vertices.push(v5);
+    geometry.vertices.push(v4);
+    geometry.vertices.push(v5);
     /*geometry.vertices.push(v6);
     geometry.vertices.push(v7);
     geometry.vertices.push(v8);*/
     geometry.faces.push(f0);
     geometry.faces.push(f1);
-    //geometry.faces.push(f2);
+    geometry.faces.push(f2);
     /*geometry.faces.push(f3);
     geometry.faces.push(f4);
     geometry.faces.push(f5);
@@ -78,7 +78,7 @@ function main()
     material.vertexColors = THREE.FaceColors;
     geometry.faces[0].color = new THREE.Color(1,0,0);
     geometry.faces[1].color = new THREE.Color(1,0,0);
-    //geometry.faces[2].color = new THREE.Color(1,0,0);
+    geometry.faces[2].color = new THREE.Color(1,0,0);
     /*geometry.faces[3].color = new THREE.Color(1,0,0);
     geometry.faces[4].color = new THREE.Color(1,0,0);
     geometry.faces[5].color = new THREE.Color(1,0,0);
