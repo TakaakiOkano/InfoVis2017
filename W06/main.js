@@ -41,9 +41,9 @@ function main()
     var f2 = new THREE.Face3(id[2][0],id[2][1],id[2][2]);
     var f3 = new THREE.Face3(id[3][0],id[3][1],id[3][2]);
     var f4 = new THREE.Face3(id[4][0],id[4][1],id[4][2]);
-    var f5 = new THREE.Face3(id[5][0],id[5][1],id[5][2]);
+    /*var f5 = new THREE.Face3(id[5][0],id[5][1],id[5][2]);
     var f6 = new THREE.Face3(id[6][0],id[6][1],id[6][2]);
-    /*var f7 = new THREE.Face3(id[7][0],id[7][1],id[7][2]);
+    var f7 = new THREE.Face3(id[7][0],id[7][1],id[7][2]);
     var f8 = new THREE.Face3(id[8][0],id[8][1],id[8][2]);
     var f9 = new THREE.Face3(id[9][0],id[9][1],id[9][2]);
     var f10= new THREE.Face3(id[10][0],id[10][1],id[10][2]);
@@ -65,9 +65,9 @@ function main()
     geometry.faces.push(f2);
     geometry.faces.push(f3);
     geometry.faces.push(f4);
-    geometry.faces.push(f5);
+    /*geometry.faces.push(f5);
     geometry.faces.push(f6);
-    /*geometry.faces.push(f7);
+    geometry.faces.push(f7);
     geometry.faces.push(f8);
     geometry.faces.push(f9);
     geometry.faces.push(f10);
@@ -81,9 +81,9 @@ function main()
     geometry.faces[2].color = new THREE.Color(1,0,0);
     geometry.faces[3].color = new THREE.Color(1,0,0);
     geometry.faces[4].color = new THREE.Color(1,0,0);
-    geometry.faces[5].color = new THREE.Color(1,0,0);
+    /*geometry.faces[5].color = new THREE.Color(1,0,0);
     geometry.faces[6].color = new THREE.Color(1,0,0);
-    /*geometry.faces[7].color = new THREE.Color(1,0,0);
+    geometry.faces[7].color = new THREE.Color(1,0,0);
     geometry.faces[8].color = new THREE.Color(1,0,0);
     geometry.faces[9].color = new THREE.Color(1,0,0);
     geometry.faces[10].color = new THREE.Color(1,0,0);
