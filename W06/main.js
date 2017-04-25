@@ -14,7 +14,7 @@ function main()
     
     //camera2種類Orthographic or Perspective
     var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.set( 0, 0, 10 );  //cameraの位置
+    camera.position.set( 0, 0, 7 );  //cameraの位置
     scene.add( camera );             //cameraを追加
 
     //描画のためのクラスrenderer
