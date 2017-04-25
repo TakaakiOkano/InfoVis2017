@@ -42,7 +42,7 @@ function main()
     
     var geometry = new THREE.Geometry();
     geometry.vertices.push(v0);
-    geometry.vertices.push(v1);
+    //geometry.vertices.push(v1);
    /* geometry.vertices.push(v2);
     geometry.vertices.push(v3);
     geometry.vertices.push(v4);
