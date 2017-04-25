@@ -35,7 +35,7 @@ function main()
     var v6 = new THREE.Vector3().fromArray(vertices[6]);
     var v7 = new THREE.Vector3().fromArray(vertices[7]);
     var v8 = new THREE.Vector3().fromArray(vertices[8]);*/
-    var id = faces[[0],[1]];
+    var id = faces;
     //var id1 = faces[1];
     var f0 = new THREE.Face3(id[0][0],id[0][1],id[0][2]);
     var f1 = new THREE.Face3(id[1][0],id[1][1],id[1][2]);
