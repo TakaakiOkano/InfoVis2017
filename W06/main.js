@@ -36,8 +36,9 @@ function main()
     var v7 = new THREE.Vector3().fromArray(vertices[7]);
     var v8 = new THREE.Vector3().fromArray(vertices[8]);
     var id = faces[0];
+    var id1 = faces[1];
     var f0 = new THREE.Face3(id[0],id[1],id[2]);
-    //var f1 = new THREE.Face3(id[0],id[2],id[3]);
+    var f1 = new THREE.Face3(id1[0],id1[1],id1[2]);
     
     var geometry = new THREE.Geometry();
     geometry.vertices.push(v0);
@@ -50,13 +51,13 @@ function main()
     geometry.vertices.push(v7);
     geometry.vertices.push(v8);*/
     geometry.faces.push(f0);
-    //geometry.faces.push(f1);
+    geometry.faces.push(f1);
     
     
     var material = new THREE.MeshBasicMaterial();
     material.vertexColors = THREE.FaceColors;
     geometry.faces[0].color = new THREE.Color(1,0,0);
-    //geometry.faces[1].color = new THREE.Color(1,0,0);
+    geometry.faces[1].color = new THREE.Color(1,0,0);
   /*  geometry.faces[2].color = new THREE.Color(1,0,0);
     geometry.faces[3].color = new THREE.Color(1,0,0);
     geometry.faces[4].color = new THREE.Color(1,0,0);
