@@ -18,7 +18,7 @@ function main()
     scene.add( camera );             //cameraを追加
 
     var light = new THREE.PointLight(0xffffff);
-    light.position.set(1,1,2);
+    light.position.set(1,1,1);
     scene.add(light);
     
     //描画のためのクラスrenderer
@@ -28,6 +28,7 @@ function main()
 
     //Objectの構成
     var vertices = [ [-1,1,0],[-1,-1,0],[1,-1,0],[1,1,0],[-1,1,2],[-1,-1,2],[1,-1,2],[1,1,2]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
+    //var vertices = [ [-1,1,0],[-1,-1,0],[1,-1,0],[1,1,0],[-1,1,2],[-1,-1,2],[1,-1,2],[1,1,2]  ];
     var faces =    [ [0,1,2],[0,2,3],[4,5,1],[4,1,0],[7,6,5],[7,5,4],[3,2,6],[3,6,7],[4,0,3],[4,3,7],[2,1,5],[2,5,6] ];  //f0:v0,v1,v2
     
     var v0 = new THREE.Vector3().fromArray(vertices[0]);
