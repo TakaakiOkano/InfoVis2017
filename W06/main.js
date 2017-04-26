@@ -18,7 +18,7 @@ function main()
     scene.add( camera );             //cameraを追加
 
     var light = new THREE.PointLight(0xffffff);
-    light.position.set(1,1,1);
+    light.position.set(2,2,2);
     scene.add(light);
     
     //描画のためのクラスrenderer
@@ -85,12 +85,12 @@ function main()
     geometry.faces[3].color = new THREE.Color(256,256,256);
     geometry.faces[4].color = new THREE.Color(256,256,256);
     geometry.faces[5].color = new THREE.Color(256,256,256);
-    geometry.faces[6].color = new THREE.Color(1,0,0);
-    geometry.faces[7].color = new THREE.Color(1,0,0);
-    geometry.faces[8].color = new THREE.Color(1,0,0);
-    geometry.faces[9].color = new THREE.Color(1,0,0);
-    geometry.faces[10].color = new THREE.Color(1,0,0);
-    geometry.faces[11].color = new THREE.Color(1,0,0); 
+    geometry.faces[6].color = new THREE.Color(256,256,256);
+    geometry.faces[7].color = new THREE.Color(256,256,256);
+    geometry.faces[8].color = new THREE.Color(256,256,256);
+    geometry.faces[9].color = new THREE.Color(256,256,256);
+    geometry.faces[10].color = new THREE.Color(256,256,256);
+    geometry.faces[11].color = new THREE.Color(256,256,256); 
     
     //material.side = THREE.DoubleSide;
     //
