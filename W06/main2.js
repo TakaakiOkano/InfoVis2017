@@ -21,7 +21,7 @@ function main2()
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( width, height );
     document.body.appendChild( renderer.domElement );
-    
+   
 
     //Objectの構成
     var vertices = [ [-1,1,0],[-1,-1,0],[1,-1,0],[1,1,0],[-1,1,2],[-1,-1,2],[1,-1,2],[1,1,2]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
@@ -92,6 +92,7 @@ function main2()
     var triangle = new THREE.Mesh( geometry, material );
     scene.add( triangle );
 
+    document.addEventListner('mousedown',mouse_down_event);
     function mouse_down_event(event)
     {
 	//Mouse picking
@@ -129,7 +130,6 @@ function main2()
 	}
     }
 
-    
     loop();
 
     function loop()
