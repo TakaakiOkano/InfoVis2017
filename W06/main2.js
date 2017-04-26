@@ -92,7 +92,6 @@ function main2()
     var triangle = new THREE.Mesh( geometry, material );
     scene.add( triangle );
 
-    document.addEventListner('mousedown',mouse_down_event);
     function mouse_down_event(event)
     {
 	//Mouse picking

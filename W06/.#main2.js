@@ -1,1 +1,0 @@
-170x108x@istc-a-014.epc.center.kobe-u.ac.jp.5245
