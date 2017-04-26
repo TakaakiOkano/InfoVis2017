@@ -11,7 +11,7 @@ function main2()
     var far = 1000;
     
     var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.set( 0, 0, 7 );
+    camera.position.set( 1, 0, 7 );
     scene.add( camera );
 
     var light = new THREE.PointLight(0xffffff);
@@ -117,7 +117,7 @@ function main2()
 	//カメラの位置
 	var origin= camera.position;
 	
-	var direction = p_wld.sub(camera.position);
+	var direction = p_wld.sub(camera.position).normalize();
 
 	//色を変える
 	var raycaster = new THRR.Raycaster(origin,direction);
