@@ -88,16 +88,46 @@ function main2()
     geometry.faces[11].color = new THREE.Color(1,0,0); 
     
     
-    var cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
+    var triangle = new THREE.Mesh( geometry, material );
+    scene.add( triangle );
 
     document.addEventListner('mousedown',mouse_down_event);
     function mouse_down_event(event)
     {
 	//Mouse picking
+	
+	//Clicked point in window coordinates
+	var x = event.clientX;
+	var y = event.clientY;
 
+	//Window coordinates to NDC
+	var vx = renderer.domElement.offsetLeft;
+	var vy = renderer.domElement.offsetTop;
+	var vw = renderer.domElement.width;
+	var vh = renderer.domElement.height;
+
+	var x_NDC = 2*(x_win-vx)/vw-1;
+	var y_NDC = -(2*(y_win-vy)/vh-1);
+
+	//NDC to world coordinates
+	var p_NDC = new THREE.Vectors3(x_NDC,y_NDC,1);
+	var p_wld = p_NDC.unproject(camera);
+
+	//Origin and drection of the ray
+	//カメラの位置
+	var origin= camera.position;
+	
+	var direction = p_wld.sub(camera.position);
+
+	//色を変える
+	var raycaster = new THRR.Raycaster(origin,direction);
+	var intersects = raycaster.intersectObject(triangle);
+	if(intersects.length>0)
+	{
+	    intersects[0].face.color.setRGB(0,0,0);
+	    intersects[0].object.geometry.colorNeedUpdate = true;
+	}
     }
-
 
     
     loop();
