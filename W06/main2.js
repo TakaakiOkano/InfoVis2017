@@ -98,8 +98,8 @@ function main2()
 	//Mouse picking
 	
 	//Clicked point in window coordinates
-	var x = event.clientX;
-	var y = event.clientY;
+	var x_win = event.clientX;
+	var y_win = event.clientY;
 
 	//Window coordinates to NDC
 	var vx = renderer.domElement.offsetLeft;
