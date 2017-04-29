@@ -17,7 +17,8 @@ function main()
     camera.position.set( 0, 0, 5 );  //cameraの位置
     scene.add( camera );             //cameraを追加
 
-    var light = new THREE.PointLight(0xffffff);
+    //var light = new THREE.PointLight(0xffffff);
+    var light = new THREE.DirectionalLight(0xffffff);
     light.position.set(1,1,1);
     scene.add(light);
     
@@ -82,7 +83,7 @@ function main()
     //var material = new THREE.MeshBasicMaterial();
     var material = new THREE.MeshLambertMaterial({ color: 0xffffff   });
     //var material = new THREE.MeshLambertMaterial({ color: 0x00000f   });
-    /*material.vertexColors = THREE.FaceColors;
+    material.vertexColors = THREE.FaceColors;
     geometry.faces[0].color  = new THREE.Color(256,256,256);
     geometry.faces[1].color  = new THREE.Color(256,256,256);
     geometry.faces[2].color  = new THREE.Color(256,256,256);
@@ -94,7 +95,7 @@ function main()
     geometry.faces[8].color  = new THREE.Color(256,256,256);
     geometry.faces[9].color  = new THREE.Color(256,256,256);
     geometry.faces[10].color = new THREE.Color(256,256,256);
-    geometry.faces[11].color = new THREE.Color(256,256,256); */
+    geometry.faces[11].color = new THREE.Color(256,256,256); 
     
     //material.side = THREE.DoubleSide;
     //
