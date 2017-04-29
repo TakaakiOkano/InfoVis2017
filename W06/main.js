@@ -77,7 +77,7 @@ function main()
     geometry.faces.push(f11);
     
     
-    var material = new THREE.MeshBasicMaterial();
+    var material = new THREE.MeshLambertMaterial({ color: 0xffffff   });
     material.vertexColors = THREE.FaceColors;
     geometry.faces[0].color = new THREE.Color(256,256,256);
     geometry.faces[1].color = new THREE.Color(256,256,256);

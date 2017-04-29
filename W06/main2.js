@@ -125,7 +125,7 @@ function main2()
 	var intersects = raycaster.intersectObject(triangle);
 	if(intersects.length>0)
 	{
-	    intersects[0].face.color.setRGB(33,33,33);
+	    intersects[0].face.color.setRGB(0,0,1);
 	    intersects[0].object.geometry.colorsNeedUpdate = true;
 	}
     }
