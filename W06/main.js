@@ -17,10 +17,11 @@ function main()
     camera.position.set( 0, 0, 5 );  //cameraの位置
     scene.add( camera );             //cameraを追加
 
-    //var light = new THREE.PointLight(0xffffff);
-    var light = new THREE.DirectionalLight(0xffffff);
+   /* var light = new THREE.PointLight(0xffffff);
+    //var light = new THREE.DirectionalLight(0xffffff);
     light.position.set(1,1,1);
     scene.add(light);
+   */
     
     //描画のためのクラスrenderer
     var renderer = new THREE.WebGLRenderer();
@@ -28,8 +29,8 @@ function main()
     document.body.appendChild( renderer.domElement ); //ウェブページのbodyにrendererのdomElementを追加
 
     //Objectの構成
-    //var vertices = [ [-1,1,-1],[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,1],[-1,-1,1],[1,-1,1],[1,1,1]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
-    var vertices = [ [-0.5,0.5,-0.5],[-0.5,-0.5,-0.5],[0.5,-0.5,-0.5],[0.5,0.5,-0.5],[-0.5,0.5,0.5],[-0.5,-0.5,0.5],[0.5,-0.5,0.5],[0.5,0.5,0.5]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
+    var vertices = [ [-1,1,-1],[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,1],[-1,-1,1],[1,-1,1],[1,1,1]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
+    //var vertices = [ [-0.5,0.5,-0.5],[-0.5,-0.5,-0.5],[0.5,-0.5,-0.5],[0.5,0.5,-0.5],[-0.5,0.5,0.5],[-0.5,-0.5,0.5],[0.5,-0.5,0.5],[0.5,0.5,0.5]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
 
     //var vertices = [ [-1,1,-2],[-1,-1,-2],[1,-1,-2],[1,1,-2],[-1,1,0],[-1,-1,0],[1,-1,0],[1,1,0] ];
     var faces =    [ [0,1,2],[0,2,3],[4,5,1],[4,1,0],[7,6,5],[7,5,4],[3,2,6],[3,6,7],[4,0,3],[4,3,7],[2,1,5],[2,5,6] ];  //f0:v0,v1,v2
