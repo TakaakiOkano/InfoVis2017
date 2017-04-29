@@ -14,11 +14,11 @@ function main()
     
     //camera2種類Orthographic or Perspective
     var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.set( 1, 0, 7 );  //cameraの位置
+    camera.position.set( 0, 0, 6 );  //cameraの位置
     scene.add( camera );             //cameraを追加
 
     var light = new THREE.PointLight(0xffffff);
-    light.position.set(2,2,2);
+    light.position.set(1,1,2);
     scene.add(light);
     
     //描画のためのクラスrenderer
