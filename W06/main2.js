@@ -111,7 +111,7 @@ function main2()
 	var y_NDC = -(2*(y_win-vy)/vh-1);
 
 	//NDC to world coordinates
-	var p_NDC = new THREE.Vectors3(x_NDC,y_NDC,1);
+	var p_NDC = new THREE.Vector3(x_NDC,y_NDC,1);
 	var p_wld = p_NDC.unproject(camera);
 
 	//Origin and drection of the ray
