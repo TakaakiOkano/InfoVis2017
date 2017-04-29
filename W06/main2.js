@@ -89,8 +89,8 @@ function main2()
     geometry.faces[11].color = new THREE.Color(1,0,0); 
     
     
-    var cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
+    var triangle = new THREE.Mesh( geometry, material );
+    scene.add( triangle );
 
     document.addEventListener('mousedown',mouse_down_event);
     function mouse_down_event(event)
@@ -121,12 +121,12 @@ function main2()
 	var direction = p_wld.sub(camera.position).normalize();
 
 	//色を変える
-	var raycaster = new THRR.Raycaster(origin,direction);
+	var raycaster = new THREE.Raycaster(origin,direction);
 	var intersects = raycaster.intersectObject(triangle);
 	if(intersects.length>0)
 	{
 	    intersects[0].face.color.setRGB(33,33,33);
-	    intersects[0].object.geometry.colorNeedUpdate = true;
+	    intersects[0].object.geometry.colorsNeedUpdate = true;
 	}
     }
 
@@ -135,8 +135,8 @@ function main2()
     function loop()
     {
         requestAnimationFrame( loop );
-        cube.rotation.x += 0.001;
-        cube.rotation.y += 0.001;
+        triangle.rotation.x += 0.001;
+        triangle.rotation.y += 0.001;
         renderer.render( scene, camera );
     }
 }
