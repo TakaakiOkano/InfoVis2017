@@ -105,8 +105,8 @@ function main()
     function loop()
     {
         requestAnimationFrame( loop );  // 関数を呼び続ける おまじないみたいなもの
-        cube.rotation.x += 0.001;       // 回転
-        //cube.rotation.y += 0.001;
+        //cube.rotation.x += 0.001;       // 回転
+        cube.rotation.y += 0.001;
         renderer.render( scene, camera );
     }
 }
