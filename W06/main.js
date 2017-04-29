@@ -85,13 +85,13 @@ function main()
     geometry.faces[1].color  = new THREE.Color(256,256,256);
     geometry.faces[2].color  = new THREE.Color(256,256,256);
     geometry.faces[3].color  = new THREE.Color(256,256,256);
-    geometry.faces[4].color  = new THREE.Color(256,256,256);
+    geometry.faces[4].color  = new THREE.Color({ color: 0xffff00   });
     geometry.faces[5].color  = new THREE.Color(256,256,256);
     geometry.faces[6].color  = new THREE.Color(256,256,256);
     geometry.faces[7].color  = new THREE.Color(256,256,256);
-    geometry.faces[8].color  = new THREE.Color(256,256,256);
+    geometry.faces[8].color  = new THREE.Color({ color: 0xffff00   });
     geometry.faces[9].color  = new THREE.Color(256,256,256);
-    geometry.faces[10].color = new THREE.Color(256,256,256);
+    geometry.faces[10].color = new THREE.Color({ color: 0xffff00   });
     geometry.faces[11].color = new THREE.Color(256,256,256); 
     
     //material.side = THREE.DoubleSide;
