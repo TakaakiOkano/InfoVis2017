@@ -24,7 +24,8 @@ function main2()
    
 
     //Objectの構成
-    var vertices = [ [-1,1,0],[-1,-1,0],[1,-1,0],[1,1,0],[-1,1,2],[-1,-1,2],[1,-1,2],[1,1,2]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
+    var vertices = [ [-1,1,-1],[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,1],[-1,-1,1],[1,-1,1],[1,1,1]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
+    //var vertices = [ [-1,1,0],[-1,-1,0],[1,-1,0],[1,1,0],[-1,1,2],[-1,-1,2],[1,-1,2],[1,1,2]  ]; //v0,v1,v2,v3,v4,v5,v6,v7
     var faces =    [ [0,1,2],[0,2,3],[4,5,1],[4,1,0],[7,6,5],[7,5,4],[3,2,6],[3,6,7],[4,0,3],[4,3,7],[2,1,5],[2,5,6] ];  //f0:v0,v1,v2
     
     var v0 = new THREE.Vector3().fromArray(vertices[0]);
@@ -75,18 +76,18 @@ function main2()
     
     var material = new THREE.MeshBasicMaterial();
     material.vertexColors = THREE.FaceColors;
-    geometry.faces[0].color = new THREE.Color(1,0,0);
-    geometry.faces[1].color = new THREE.Color(1,0,0);
-    geometry.faces[2].color = new THREE.Color(1,0,0);
-    geometry.faces[3].color = new THREE.Color(1,0,0);
-    geometry.faces[4].color = new THREE.Color(1,0,0);
-    geometry.faces[5].color = new THREE.Color(1,0,0);
-    geometry.faces[6].color = new THREE.Color(1,0,0);
-    geometry.faces[7].color = new THREE.Color(1,0,0);
-    geometry.faces[8].color = new THREE.Color(1,0,0);
-    geometry.faces[9].color = new THREE.Color(1,0,0);
-    geometry.faces[10].color = new THREE.Color(1,0,0);
-    geometry.faces[11].color = new THREE.Color(1,0,0); 
+    geometry.faces[0].color = new THREE.Color(256,256,256);
+    geometry.faces[1].color = new THREE.Color(256,256,256);
+    geometry.faces[2].color = new THREE.Color(256,256,256);
+    geometry.faces[3].color = new THREE.Color(256,256,256);
+    geometry.faces[4].color = new THREE.Color(256,256,256);
+    geometry.faces[5].color = new THREE.Color(256,256,256);
+    geometry.faces[6].color = new THREE.Color(256,256,256);
+    geometry.faces[7].color = new THREE.Color(256,256,256);
+    geometry.faces[8].color = new THREE.Color(256,256,256);
+    geometry.faces[9].color = new THREE.Color(256,256,256);
+    geometry.faces[10].color = new THREE.Color(256,256,256);
+    geometry.faces[11].color = new THREE.Color(256,256,256); 
     
     
     var triangle = new THREE.Mesh( geometry, material );
