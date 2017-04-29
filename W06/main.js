@@ -94,8 +94,8 @@ function main()
     
     //material.side = THREE.DoubleSide;
     //
-    var triangle = new THREE.Mesh( geometry, material );
-    scene.add( triangle );
+    var cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
 
     loop();
 

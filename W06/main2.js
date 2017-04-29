@@ -89,8 +89,8 @@ function main2()
     geometry.faces[11].color = new THREE.Color(1,0,0); 
     
     
-    var triangle = new THREE.Mesh( geometry, material );
-    scene.add( triangle );
+    var cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
 
     document.addEventListner('mousedown',mouse_down_event);
     function mouse_down_event(event)
@@ -125,7 +125,7 @@ function main2()
 	var intersects = raycaster.intersectObject(triangle);
 	if(intersects.length>0)
 	{
-	    intersects[0].face.color.setRGB(100,30,0);
+	    intersects[0].face.color.setRGB(0,0,1);
 	    intersects[0].object.geometry.colorNeedUpdate = true;
 	}
     }
