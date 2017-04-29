@@ -18,7 +18,7 @@ function main()
     scene.add( camera );             //cameraを追加
 
     var light = new THREE.PointLight(0xffffff);
-    light.position.set(2,2,2);
+    light.position.set(1,1,2);
     scene.add(light);
     
     //描画のためのクラスrenderer
