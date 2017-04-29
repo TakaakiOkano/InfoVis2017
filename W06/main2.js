@@ -92,7 +92,7 @@ function main2()
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
-    document.addEventListner('mousedown',mouse_down_event);
+    document.addEventListener('mousedown',mouse_down_event);
     function mouse_down_event(event)
     {
 	//Mouse picking
