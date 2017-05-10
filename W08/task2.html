@@ -60,15 +60,15 @@
 	 }
 	</script>
 
-
-	
         //fragment shader
 	<script type="x-shader/x-fragment" id="shader.frag">
-	 void main()
-	 {
-	     //fragment(r,g,b,a)
-	     gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
-	 }
+	  varying vec3 point_color;
+	  
+	  void main()
+	  {
+	  //fragment(r,g,b,a)
+	  gl_FragColor = vec4( point_color, 1.0 );
+	  }
 	</script>
 	<script src="main.js"></script>
 	<script>
