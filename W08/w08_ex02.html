@@ -4,17 +4,20 @@
     </head>
     <body>
 	<script src="http://mrdoob.github.io/three.js/build/three.min.js"></script>
-
+        //shaderコード(htmlのscriptで書く)
+	//vertex shader
 	<script type="x-shader/x-vertex" id="shader.vert">
 	 void main()
 	 {
+	     //投影座標(投影計算)
 	     gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 	 }
 	</script>
-
+        //fragment shader
 	<script type="x-shader/x-fragment" id="shader.frag">
 	 void main()
 	 {
+	     //fragmentの色を決定(r,g,b,a:透明度)
 	     gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
 	 }
 	</script>
