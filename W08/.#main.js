@@ -1,1 +1,0 @@
-okanotakaaki@okano-no-MacBook-Pro.local.558
