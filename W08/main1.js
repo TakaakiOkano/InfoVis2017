@@ -4,6 +4,8 @@ function main1()
     var height = 500;
 
     var scene = new THREE.Scene();
+    var scene2 = new THREE.Scene();
+
 
     var fov = 45;
     var aspect = width / height;
@@ -12,10 +14,12 @@ function main1()
     var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
+    scene2.add( camera );
 
     var light = new THREE.PointLight();
     light.position.set( 5, 5, 5 );
     scene.add( light );
+    scene2.add( light );
 
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( width, height );
@@ -35,6 +39,8 @@ function main1()
 
     var torus_knot = new THREE.Mesh( geometry, material );
     scene.add( torus_knot );
+    scene2.add( torus_knot );
+
 
     loop();
 
@@ -44,5 +50,7 @@ function main1()
         torus_knot.rotation.x += 0.01;
         torus_knot.rotation.y += 0.01;
         renderer.render( scene, camera );
+        renderer.render( scene2, camera );
+
     }
 }
