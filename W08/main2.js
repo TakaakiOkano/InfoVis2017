@@ -26,8 +26,8 @@ function main2()
     //shaderコードをmaterialに渡す
     var material = new THREE.ShaderMaterial({
         vertexColors: THREE.VertexColors,                             //色付け
-        vertexShader: document.getElementById('gouraud.vert').text,    //vertexshader割り当て
-        fragmentShader: document.getElementById('gouraud.frag').text,
+        vertexShader: document.getElementById('phong.vert').text,    //vertexshader割り当て
+        fragmentShader: document.getElementById('phong.frag').text,
 	uniforms:{
 	    light_position:{type: 'v3',value: light.position}
 	}
