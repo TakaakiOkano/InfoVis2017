@@ -14,7 +14,10 @@ function main1()
     var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
-    scene2.add( camera );
+    
+    var camera2 = new THREE.PerspectiveCamera( fov, aspect, near, far );
+    camera2.position.set( 0, 0, 5 );
+    scene2.add( camera2 );
 
     var light = new THREE.PointLight();
     light.position.set( 5, 5, 5 );
@@ -52,7 +55,7 @@ function main1()
 	renderer.setViewport( 1, 1,   0.5 * width - 2, height - 2 );
         renderer.render( scene, camera );
 	renderer.setViewport( 0.5 * width + 1, 1,   0.5 * width - 2, height - 2 );
-        renderer.render( scene2, camera );
+        renderer.render( scene2, camera2 );
 
     }
 }
