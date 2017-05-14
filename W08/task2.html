@@ -64,8 +64,8 @@
 	vec3 L = normalize(light_position - point_position.xyz);
 	vec3 N = normalize(normal_vector);
 
-	//vec3 shaded_color = LambertianReflection(C,L,N);  
-	vec3 shaded_color = PhongReflection(C,L,N);
+	vec3 shaded_color = LambertianReflection(C,L,N);  
+	//vec3 shaded_color = PhongReflection(C,L,N);
 
 	//fragment(r,g,b,a)
 	gl_FragColor = vec4( shaded_color, 1.0 );
