@@ -49,8 +49,8 @@
 	vec3 L = normalize(light_position - point_position.xyz);
 	vec3 N = normalize(normal_vector);
 	vec3 V = normalize(camera_position - point_position.xyz);
-	//point_color = LambertianReflection(C,L,N,V);  
-	point_color = PhongReflection(C,L,N);
+	//point_color = LambertianReflection(C,L,N);  
+	point_color = PhongReflection(C,L,N,V);
 	gl_Position = projectionMatrix * point_position;
 	}
 
