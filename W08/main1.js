@@ -49,7 +49,9 @@ function main1()
         requestAnimationFrame( loop );
         torus_knot.rotation.x += 0.01;
         torus_knot.rotation.y += 0.01;
+	renderer.setViewport( 1, 1,   0.5 * width - 2, height - 2 );
         renderer.render( scene, camera );
+	renderer.setViewport( 0.5 * width + 1, 1,   0.5 * width - 2, height - 2 );
         renderer.render( scene2, camera );
 
     }
