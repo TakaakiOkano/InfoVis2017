@@ -33,8 +33,10 @@
 	vec3 R = reflect(-L,N);
 	vec3 V = normalize(-point_position.xyz);
 
-	float dd = max(dot(N.L),0.0);
+	float dd = max(dot(N,L),0.0);
 	float ds = pow( max(dot(R,V),0.0),n );
+	if(dd<=0.0){ds=0.0;}
+
 	float Ia = ka;
 	float Id = kd*dd;
 	float Is = ks*ds;
