@@ -42,7 +42,7 @@ function main()
     for ( var i = 0; i < 256; i++ )
     {
         var S = i / 255.0; // [0,1]
-        var R = Math.max( Math.cos( S*Math.PI ), 0.0 );
+        var R = 1;//Math.max( Math.cos( S/2*Math.PI ), 0.0 );
         var G = 1-S;
         var B = 1-S;
         var color = new THREE.Color( R, G, B );
