@@ -29,7 +29,8 @@ function main1()
         vertexShader: document.getElementById('gouraud.vert').text,    //vertexshader割り当て
         fragmentShader: document.getElementById('gouraud.frag').text,
 	uniforms:{
-	    light_position:{type: 'v3',value: light.position}
+	    light_position:{type: 'v3',value: light.position},
+	    camera_position:{type: 'v3',value: camera.position},
 	}
     });
 
