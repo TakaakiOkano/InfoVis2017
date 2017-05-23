@@ -1,8 +1,33 @@
 function Isosurfaces( volume, isovalue )
 {
+
+    // Create color map
+    var RESOLUTION = 256;//resolution
+    var cmap = [];
+    for ( var i = 0; i < RESOLUTION; i++ )
+    {
+	var S = i / (RESOLUTION-1); // [0,1]
+	var R = Math.max( Math.cos( ( S - 1.0 ) * Math.PI ), 0.0 );
+	var G = Math.max( Math.cos( ( S - 0.5 ) * Math.PI ), 0.0 );
+	var B = Math.max( Math.cos( S * Math.PI ), 0.0 );
+	var color = new THREE.Color( R, G, B );
+	cmap.push( [ S, '0x' + color.getHexString() ] );
+    }
+    
+    // Draw color map
+    var lut = new THREE.Lut( 'rainbow', cmap.length );
+    lut.addColorMap( 'mycolormap', cmap );
+    lut.changeColorMap( 'mycolormap' );
+    scene.add( lut.setLegendOn( {
+        'layout':'horizontal',
+        'position': { 'x': 0.6, 'y': -1.1, 'z': 2 },
+        'dimensions': { 'width': 0.15, 'height': 1.2 }
+    } ) );
+
+    
     var geometry = new THREE.Geometry();
     var material = new THREE.MeshLambertMaterial();
-
+    
     var smin = volume.min_value;
     var smax = volume.max_value;
     isovalue = KVS.Clamp( isovalue, smin, smax );
@@ -10,6 +35,8 @@ function Isosurfaces( volume, isovalue )
     var lut = new KVS.MarchingCubesTable();
     var cell_index = 0;
     var counter = 0;
+
+    //Marching process
     for ( var z = 0; z < volume.resolution.z - 1; z++ )
     {
         for ( var y = 0; y < volume.resolution.y - 1; y++ )
@@ -21,8 +48,10 @@ function Isosurfaces( volume, isovalue )
                 if ( index == 0 ) { continue; }
                 if ( index == 255 ) { continue; }
 
+		//For each triangle face
                 for ( var j = 0; lut.edgeID[index][j] != -1; j += 3 )
                 {
+		    //Edges and its end-points
                     var eid0 = lut.edgeID[index][j];
                     var eid1 = lut.edgeID[index][j+2];
                     var eid2 = lut.edgeID[index][j+1];
@@ -34,6 +63,7 @@ function Isosurfaces( volume, isovalue )
                     var vid4 = lut.vertexID[eid2][0];
                     var vid5 = lut.vertexID[eid2][1];
 
+		    //vertex coordinates of the end-points
                     var v0 = new THREE.Vector3( x + vid0[0], y + vid0[1], z + vid0[2] );
                     var v1 = new THREE.Vector3( x + vid1[0], y + vid1[1], z + vid1[2] );
                     var v2 = new THREE.Vector3( x + vid2[0], y + vid2[1], z + vid2[2] );
@@ -41,6 +71,7 @@ function Isosurfaces( volume, isovalue )
                     var v4 = new THREE.Vector3( x + vid4[0], y + vid4[1], z + vid4[2] );
                     var v5 = new THREE.Vector3( x + vid5[0], y + vid5[1], z + vid5[2] );
 
+		    //Vertex coordinates of the triangle face
                     var v01 = interpolated_vertex( v0, v1, isovalue );
                     var v23 = interpolated_vertex( v2, v3, isovalue );
                     var v45 = interpolated_vertex( v4, v5, isovalue );
@@ -62,8 +93,29 @@ function Isosurfaces( volume, isovalue )
 
     geometry.computeVertexNormals();
 
+
+    //change color
     material.color = new THREE.Color( "white" );
 
+    // Assign colors for each vertex
+    material.vertexColors = THREE.VertexColors;
+    var S_max = Math.max.apply(null,scalars);
+    var S_min = Math.min.apply(null,scalars);
+    for ( var i = 0; i < nfaces; i++ )
+    {
+	var id = faces[i];
+	var S0 = scalars[ id[0] ];
+	var S1 = scalars[ id[1] ];
+	var S2 = scalars[ id[2] ];
+	var C0 = GetColor(S0,S_min,S_max,cmap); 
+	var C1 = GetColor(S1,S_min,S_max,cmap); 
+	var C2 = GetColor(S2,S_min,S_max,cmap); 
+	geometry.faces[i].vertexColors.push( C0 );
+	geometry.faces[i].vertexColors.push( C1 );
+	geometry.faces[i].vertexColors.push( C2 );
+    }
+
+    
     return new THREE.Mesh( geometry, material );
 
 
@@ -72,6 +124,7 @@ function Isosurfaces( volume, isovalue )
         var lines = volume.resolution.x;
         var slices = volume.resolution.x * volume.resolution.y;
 
+	//cell node indices
         var id0 = cell_index;
         var id1 = id0 + 1;
         var id2 = id1 + lines;
