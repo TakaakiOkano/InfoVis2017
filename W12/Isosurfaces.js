@@ -96,17 +96,17 @@ function Isosurfaces( volume, isovalue )
 		    var nfaces = geometry.faces.length;
 		    // Assign colors for each vertex
 		    material.vertexColors = THREE.VertexColors;
-		    var S_max = Math.max.apply(null,scalars);
-		    var S_min = Math.min.apply(null,scalars);
+		    //var S_max = Math.max.apply(null,index);
+		    //var S_min = Math.min.apply(null,index);
 		    for ( var i = 0; i < nfaces; i++ )
 		    {
 			var id = faces[i];
 			var S0 = scalars[ id[0] ];
 			var S1 = scalars[ id[1] ];
 			var S2 = scalars[ id[2] ];
-			var C0 = GetColor(S0,S_min,S_max,cmap); 
-			var C1 = GetColor(S1,S_min,S_max,cmap); 
-			var C2 = GetColor(S2,S_min,S_max,cmap); 
+			var C0 = GetColor(S0,smin,smax,cmap); 
+			var C1 = GetColor(S1,smin,smax,cmap); 
+			var C2 = GetColor(S2,smin,smax,cmap); 
 			geometry.faces[i].vertexColors.push( C0 );
 			geometry.faces[i].vertexColors.push( C1 );
 			geometry.faces[i].vertexColors.push( C2 );
@@ -176,7 +176,8 @@ function Isosurfaces( volume, isovalue )
     {
         return new THREE.Vector3().addVectors( v0, v1 ).divideScalar( 2 );
     }
-    
+
+    //
     function GetColor(S,S_min,S_max,cmap){
 	var resolution = cmap.length
 	var index = Normalize(S,S_min,S_max)*(resolution-1);
