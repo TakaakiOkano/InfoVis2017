@@ -121,7 +121,7 @@ function Isosurfaces( volume, isovalue )
 
 
     //change color
-    material.color = new THREE.Color( "white" );
+    //material.color = new THREE.Color( "white" );
 
     
     return new THREE.Mesh( geometry, material );
