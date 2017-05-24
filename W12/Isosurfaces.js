@@ -100,7 +100,7 @@ function Isosurfaces( volume, isovalue )
 		    //var S_min = Math.min.apply(null,index);
 		    for ( var i = 0; i < nfaces; i++ )
 		    {
-			var id = faces[i];
+			var id = geometry.faces[i];
 			var S0 = scalars[ id[0] ];
 			var S1 = scalars[ id[1] ];
 			var S2 = scalars[ id[2] ];
