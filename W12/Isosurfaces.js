@@ -3,7 +3,6 @@ function Isosurfaces( volume, isovalue )
     
     var geometry = new THREE.Geometry();
     var material = new THREE.MeshLambertMaterial();
-    var screen = new KVS.THREEScreen();
     
     var smin = volume.min_value;
     var smax = volume.max_value;
@@ -27,6 +26,7 @@ function Isosurfaces( volume, isovalue )
     }
     
     // Draw color map
+    /*
     var lut = new THREE.Lut( 'rainbow', cmap.length );
     lut.addColorMap( 'mycolormap', cmap );
     lut.changeColorMap( 'mycolormap' );
@@ -35,6 +35,7 @@ function Isosurfaces( volume, isovalue )
         'position': { 'x': 0.6, 'y': -1.1, 'z': 2 },
         'dimensions': { 'width': 0.15, 'height': 1.2 }
     } ) );
+    */
 
     
     //Marching process
