@@ -16,10 +16,12 @@ function main()
     var surfaces = Isosurfaces( volume, isovalue );
     screen.scene.add( surfaces );
 
+    //マウス
     document.addEventListener( 'mousemove', function() {
         screen.light.position.copy( screen.camera.position );
     });
 
+    //リサイズ
     window.addEventListener( 'resize', function() {
         screen.resize( [ window.innerWidth, window.innerHeight ] );
     });

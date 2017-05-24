@@ -26,8 +26,7 @@ function Isosurfaces( volume, isovalue )
     }
     
     // Draw color map
-    /*
-    var lut = new THREE.Lut( 'rainbow', cmap.length );
+    /*var lut = new THREE.Lut( 'rainbow', cmap.length );
     lut.addColorMap( 'mycolormap', cmap );
     lut.changeColorMap( 'mycolormap' );
     screen.scene.add( lut.setLegendOn( {
@@ -35,8 +34,7 @@ function Isosurfaces( volume, isovalue )
         'position': { 'x': 0.6, 'y': -1.1, 'z': 2 },
         'dimensions': { 'width': 0.15, 'height': 1.2 }
     } ) );
-    */
-
+   */
     
     //Marching process
     for ( var z = 0; z < volume.resolution.z - 1; z++ )
@@ -45,7 +43,9 @@ function Isosurfaces( volume, isovalue )
         {
             for ( var x = 0; x < volume.resolution.x - 1; x++ )
             {
+		//
                 var indices = cell_node_indices( cell_index++ );
+		//
                 var index = table_index( indices );
                 if ( index == 0 ) { continue; }
                 if ( index == 255 ) { continue; }
@@ -96,8 +96,8 @@ function Isosurfaces( volume, isovalue )
 		    var nfaces = geometry.faces.length;
 		    // Assign colors for each vertex
 		    material.vertexColors = THREE.VertexColors;
-		    //var S_max = Math.max.apply(null,index);
-		    //var S_min = Math.min.apply(null,index);
+		    //var S_max = Math.max.apply(null,scalars);
+		    //var S_min = Math.min.apply(null,scalars);
 		    for ( var i = 0; i < nfaces; i++ )
 		    {
 			var id = geometry.faces[i];
@@ -177,7 +177,7 @@ function Isosurfaces( volume, isovalue )
         return new THREE.Vector3().addVectors( v0, v1 ).divideScalar( 2 );
     }
 
-    //
+    
     function GetColor(S,S_min,S_max,cmap){
 	var resolution = cmap.length
 	var index = Normalize(S,S_min,S_max)*(resolution-1);
