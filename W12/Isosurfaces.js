@@ -82,6 +82,7 @@ function Isosurfaces( volume, isovalue )
                     var v01 = interpolated_vertex( v0, v1, isovalue );
                     var v23 = interpolated_vertex( v2, v3, isovalue );
                     var v45 = interpolated_vertex( v4, v5, isovalue );
+		    
 		    //各頂点をpush
                     geometry.vertices.push( v01 );
                     geometry.vertices.push( v23 );
@@ -101,9 +102,9 @@ function Isosurfaces( volume, isovalue )
 		    for ( var i = 0; i < nfaces; i++ )
 		    {
 			var id = geometry.faces[i];
-			var S0 = scalars[ id[0] ];
-			var S1 = scalars[ id[1] ];
-			var S2 = scalars[ id[2] ];
+			var S0 = volume.values[ id[0] ];
+			var S1 = volume.values[ id[1] ];
+			var S2 = volume.values[ id[2] ];
 			var C0 = GetColor(S0,smin,smax,cmap); 
 			var C1 = GetColor(S1,smin,smax,cmap); 
 			var C2 = GetColor(S2,smin,smax,cmap); 
