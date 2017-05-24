@@ -36,6 +36,7 @@ function Isosurfaces( volume, isovalue )
     var cell_index = 0;
     var counter = 0;
 
+    
     //Marching process
     for ( var z = 0; z < volume.resolution.z - 1; z++ )
     {
@@ -51,11 +52,15 @@ function Isosurfaces( volume, isovalue )
 		//For each triangle face
                 for ( var j = 0; lut.edgeID[index][j] != -1; j += 3 )
                 {
+		    //Extract a triangle face
+		    
 		    //Edges and its end-points
+		    //3角形の各頂点
                     var eid0 = lut.edgeID[index][j];
                     var eid1 = lut.edgeID[index][j+2];
                     var eid2 = lut.edgeID[index][j+1];
 
+		    //3角形の各頂点の両端の頂点
                     var vid0 = lut.vertexID[eid0][0];
                     var vid1 = lut.vertexID[eid0][1];
                     var vid2 = lut.vertexID[eid1][0];
@@ -72,18 +77,39 @@ function Isosurfaces( volume, isovalue )
                     var v5 = new THREE.Vector3( x + vid5[0], y + vid5[1], z + vid5[2] );
 
 		    //Vertex coordinates of the triangle face
+		    //3角形の各頂点の座標
                     var v01 = interpolated_vertex( v0, v1, isovalue );
                     var v23 = interpolated_vertex( v2, v3, isovalue );
                     var v45 = interpolated_vertex( v4, v5, isovalue );
-
+		    //各頂点をpush
                     geometry.vertices.push( v01 );
                     geometry.vertices.push( v23 );
                     geometry.vertices.push( v45 );
 
-                    var id0 = counter++;
-                    var id1 = counter++;
-                    var id2 = counter++;
+                    var id0 = counter++;  //v01
+                    var id1 = counter++;  //v23
+                    var id2 = counter++;  //v45
                     geometry.faces.push( new THREE.Face3( id0, id1, id2 ) );
+
+
+		     // Assign colors for each vertex
+		    material.vertexColors = THREE.VertexColors;
+		    var S_max = Math.max.apply(null,scalars);
+		    var S_min = Math.min.apply(null,scalars);
+		    for ( var i = 0; i < nfaces; i++ )
+		    {
+			var id = faces[i];
+			var S0 = scalars[ id[0] ];
+			var S1 = scalars[ id[1] ];
+			var S2 = scalars[ id[2] ];
+			var C0 = GetColor(S0,S_min,S_max,cmap); 
+			var C1 = GetColor(S1,S_min,S_max,cmap); 
+			var C2 = GetColor(S2,S_min,S_max,cmap); 
+			geometry.faces[i].vertexColors.push( C0 );
+			geometry.faces[i].vertexColors.push( C1 );
+			geometry.faces[i].vertexColors.push( C2 );
+		    }
+		    
                 }
             }
             cell_index++;
@@ -97,24 +123,6 @@ function Isosurfaces( volume, isovalue )
     //change color
     material.color = new THREE.Color( "white" );
 
-    // Assign colors for each vertex
-    material.vertexColors = THREE.VertexColors;
-    var S_max = Math.max.apply(null,scalars);
-    var S_min = Math.min.apply(null,scalars);
-    for ( var i = 0; i < nfaces; i++ )
-    {
-	var id = faces[i];
-	var S0 = scalars[ id[0] ];
-	var S1 = scalars[ id[1] ];
-	var S2 = scalars[ id[2] ];
-	var C0 = GetColor(S0,S_min,S_max,cmap); 
-	var C1 = GetColor(S1,S_min,S_max,cmap); 
-	var C2 = GetColor(S2,S_min,S_max,cmap); 
-	geometry.faces[i].vertexColors.push( C0 );
-	geometry.faces[i].vertexColors.push( C1 );
-	geometry.faces[i].vertexColors.push( C2 );
-    }
-
     
     return new THREE.Mesh( geometry, material );
 
@@ -125,6 +133,7 @@ function Isosurfaces( volume, isovalue )
         var slices = volume.resolution.x * volume.resolution.y;
 
 	//cell node indices
+	//立方体の各格子点
         var id0 = cell_index;
         var id1 = id0 + 1;
         var id2 = id1 + lines;
@@ -133,7 +142,7 @@ function Isosurfaces( volume, isovalue )
         var id5 = id1 + slices;
         var id6 = id2 + slices;
         var id7 = id3 + slices;
-
+	
         return [ id0, id1, id2, id3, id4, id5, id6, id7 ];
     }
 
@@ -157,7 +166,7 @@ function Isosurfaces( volume, isovalue )
         if ( s5 > isovalue ) { index |=  32; }
         if ( s6 > isovalue ) { index |=  64; }
         if ( s7 > isovalue ) { index |= 128; }
-
+	//求めたindexを返す
         return index;
     }
 
@@ -165,4 +174,28 @@ function Isosurfaces( volume, isovalue )
     {
         return new THREE.Vector3().addVectors( v0, v1 ).divideScalar( 2 );
     }
+
+
+    function GetColor(S,S_min,S_max,cmap){
+    var resolution = cmap.length
+    var index = Normalize(S,S_min,S_max)*(resolution-1);
+    var index0 = Math.floor(index);
+    var index1 = Math.min(index0+1,resolution-1);
+    var t = index - index0; // t = (index-index0)/(index1-index0)
+    var C0 = new THREE.Color().setHex( cmap[ index0 ][1] );
+    var C1 = new THREE.Color().setHex( cmap[ index1 ][1] );
+    var R = Interpolate(C0.r,C1.r,t);
+    var G = Interpolate(C0.g,C1.g,t);
+    var B = Interpolate(C0.b,C1.b,t);
+    return new THREE.Color(R,G,B);
+  }
+  
+  function Normalize(S,S_min,S_max){ // e.g. S:0.1~0.8 -> S:0~1
+    return (S-S_min)/(S_max-S_min);
+  }
+
+  function Interpolate(S0,S1,t){ 
+    return (1-t)*S0+t*S1;
+  }
+    
 }
