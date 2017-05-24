@@ -93,7 +93,7 @@ function Isosurfaces( volume, isovalue )
                     geometry.faces.push( new THREE.Face3( id0, id1, id2 ) );
 
 		    
-		    var nfaces = faces.length;
+		    var nfaces = geometry.faces.length;
 		    // Assign colors for each vertex
 		    material.vertexColors = THREE.VertexColors;
 		    var S_max = Math.max.apply(null,scalars);
