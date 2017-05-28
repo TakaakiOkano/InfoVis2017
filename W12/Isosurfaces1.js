@@ -1,6 +1,5 @@
 function Isosurfaces( volume, isovalue )
 {
-    
     var geometry = new THREE.Geometry();
     var material = new THREE.MeshLambertMaterial();
     
