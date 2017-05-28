@@ -1,4 +1,4 @@
-function Isosurfaces1( volume, isovalue )
+function Isosurfaces( volume, isovalue )
 {
     
     var geometry = new THREE.Geometry();
@@ -163,6 +163,4 @@ function Isosurfaces1( volume, isovalue )
     {
         return new THREE.Vector3().addVectors( v0, v1 ).divideScalar( 2 );
     }
-
-    
 }
