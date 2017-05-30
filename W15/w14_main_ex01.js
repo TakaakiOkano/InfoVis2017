@@ -134,6 +134,8 @@ function main()
 //    screen.renderer.setClearColor( new THREE.Color( "black" ) );
 
     var exit_buffer = new THREE.Scene();
+
+    //First pass
     var exit_texture = new THREE.WebGLRenderTarget(
         screen.width, screen.height,
         {
@@ -160,6 +162,7 @@ function main()
     var bounding_mesh = new THREE.Mesh( bounding_geometry, bounding_material );
     exit_buffer.add( bounding_mesh );
 
+    //描画処理
     var raycaster_material = new THREE.ShaderMaterial( {
         vertexShader: document.getElementById( 'raycaster.vert' ).textContent,
         fragmentShader: document.getElementById( 'raycaster.frag' ).textContent,
