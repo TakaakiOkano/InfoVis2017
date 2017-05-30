@@ -11,6 +11,27 @@
 	<script src="KVSLobsterData.js"></script>
 	<script src="Bounds.js"></script>
 	<script src="Isosurfaces.js"></script>
+	<script type="text/javascript" src="dat.gui.js"></script>
+	<script type="text/javascript">
+	  
+	  var FizzyText = function() {
+	  this.message = 'dat.gui';
+	  this.speed = 0.8;
+	  this.displayOutline = false;
+	  this.explode = function() { ... };
+	  // Define render logic ...
+	  };
+	  
+	  window.onload = function() {
+	  var text = new FizzyText();
+	  var gui = new dat.GUI();
+	  gui.add(text, 'message');
+	  gui.add(text, 'speed', -5, 5);
+	  gui.add(text, 'displayOutline');
+	  gui.add(text, 'explode');
+	  };
+	  
+</script>
 	<script type="x-shader/x-vertex" id="phong.vert">
 	  varying vec3 point_color;
 	  varying vec4 point_position;
