@@ -81,7 +81,7 @@ function main()
 		    fragmentShader: document.getElementById('phone.frag').text,
 		    uniforms:
 		    {
-			light_position: {type: 'v3', value: light.position}
+			light_position: {type: 'v3', value: light.position},
 			camera_position:{type: 'v3', value: screen.camera.position}
 		    }
 		});
