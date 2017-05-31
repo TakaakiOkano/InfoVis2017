@@ -16,7 +16,7 @@ function main()
     function setup()
     {
 	var bounds = Bounds( volume );
-	screen.scene.add( bounds );
+	//screen.scene.add( bounds );
 	
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
