@@ -55,8 +55,8 @@ function main()
 	//GUIパラメータの準備
 	var newPara = function()
 	{
-	    //this.color = "#ff0000";
-	    //this.isovalue = 128;
+	    this.color = "#ff0000";
+	    this.isovalue = 128;
 	   
 	   /* //Lambertianボタン
 	    this.Lambertian = function()
