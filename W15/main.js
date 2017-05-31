@@ -39,30 +39,25 @@ function main()
     
     function setup()
     {
-	var Color = "#ff0000";
-	var surfaces = Isosurfaces( volume, 128, Color );
-	screen.scene.add( surfaces );
-	
 	var bounds = Bounds( volume );
 	screen.scene.add( bounds );
 	
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
-
+	
+	var Color = "#ff0000";
+	
 	var isovalue;
+	isovalue = 128;
+	var surfaces = Isosurfaces( volume, isovalue, Color );
+	screen.scene.add( surfaces );
 	
 	//GUIパラメータの準備
 	var newPara = function()
 	{
-	    this.color = "#ff0000";
-	    this.isovalue = 128;
-	    //applyボタン
-	    this.apply = function()
-	    {
-		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color );
-		screen.scene.add( surfaces );
-	    }
+	    //this.color = "#ff0000";
+	    //this.isovalue = 128;
+	   
 	   /* //Lambertianボタン
 	    this.Lambertian = function()
 	    {
@@ -87,6 +82,14 @@ function main()
 		});
 	    }
 	    this.Box = true;
+
+	    //applyボタン
+	    this.apply = function()
+	    {
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color );
+		screen.scene.add( surfaces );
+	    }
 	};
 	
 	
@@ -97,10 +100,10 @@ function main()
 	    var gui = new dat.GUI();
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
-	    gui.add(Para, 'apply');
 	    //gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
+	    gui.add(Para, 'apply');
 	};
 		
 	//設定更新処理
