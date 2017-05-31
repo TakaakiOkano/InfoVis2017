@@ -61,24 +61,21 @@ function main()
 	
 	    }
 	    
-	    //this.Box = true;
-	    this.box = function()
-	    {
-	    if(checkbox)
-	    {
-		screen.scene.add( bounds );
-	    }
-		else {
-		screen.scene.remove( bounds );
-	    }
-	    }
-	    
+	    this.Box = true;
+
 	    //applyボタン
 	    this.apply = function()
 	    {
 		screen.scene.remove( surfaces );
 		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
+		if(checkbox)
+		{
+		    screen.scene.add( bounds );
+		}
+		else {
+		    screen.scene.remove( bounds );
+		}
 	    }
 	};
 	
