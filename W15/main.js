@@ -58,7 +58,8 @@ function main()
 		});
 	
 	    }
-	    
+
+	    //枠のチェック
 	    this.Box = false;
 
 	    //applyボタン
