@@ -30,7 +30,34 @@ function main()
 	    camera_position:{type: 'v3',value: screen.camera.position}
 	}
     });
+
+    //GUI表示
+    window.onload = function()
+    {
+	square = new sampleSquare();
+	var gui = new dat.GUI();
+	gui.addColor(square, 'color').onChange(setValue);
+	gui.add(square, 'isovalue', 0, 255).step(1).onChange(setValue);
+	gui.add(square, 'apply');
+	gui.add(square, 'Lambertian');
+	gui.add(square, 'Phong');
+	gui.add(square, 'Box').onChange(setValue);
+    };
+
     
+//設定更新処理
+	function setValue()
+	{
+	    isovalue = square.isovalue;
+	    Color = square.color;
+	    
+	    if(square.Box) {
+		screen.scene.add( bounds );
+	    }
+	    else {
+		screen.scene.remove( bounds );
+	    }
+	}
     
     //マウス
     document.addEventListener( 'mousemove', function() {
