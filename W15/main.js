@@ -109,7 +109,7 @@ function main()
 	    isovalue = Para.isovalue;
 	    Color = Para.color;
 	    
-	    if(square.Box)
+	    if(Para.Box)
 	    {
 		screen.scene.add( bounds );
 	    }
