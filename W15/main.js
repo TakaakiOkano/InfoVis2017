@@ -23,16 +23,16 @@ function main()
 	
 	var Color = "#ff0000";
 	
-	var preisovalue;
-	preisovalue = 128;
-	var surfaces = Isosurfaces( volume, preisovalue, Color );
+	var isovalue;
+	isovalue = 128;
+	var surfaces = Isosurfaces( volume, isovalue, Color );
 	screen.scene.add( surfaces );
 	
 	//GUIパラメータの準備
 	var newPara = function()
 	{
 	    //this.color = "#ff0000";
-	    this.isovalue = preisovalue;
+	    this.isovalue = 128;
 	   
 	   /* //Lambertianボタン
 	    this.Lambertian = function()
@@ -56,13 +56,14 @@ function main()
 			camera_position:{type: 'v3', value: screen.camera.position}
 		    }
 		});
+	
 	    }
 	    this.Box = true;
 
 	    this.apply = function()
 	    {
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, this.isovalue, Color );
+		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
 	    }
 	};
@@ -85,7 +86,7 @@ function main()
 	//設定更新処理
 	function setValue()
 	{
-	    preisovalue = Para.isovalue;
+	    isovalue = Para.isovalue;
 	    //Color = Para.color;
 	    
 	    if(Para.Box)
