@@ -31,7 +31,7 @@ function main()
 	//GUIパラメータの準備
 	var newPara = function()
 	{
-	    this.color = "#ff0000";
+	    //this.color = "#ff0000";
 	    this.isovalue = 128;
 	   
 	   /* //Lambertianボタン
@@ -56,16 +56,11 @@ function main()
 			camera_position:{type: 'v3', value: screen.camera.position}
 		    }
 		});
-	    }
-	    this.Box = true;
-
-	    //applyボタン
-	    this.apply = function()
-	    {
 		screen.scene.remove( surfaces );
 		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
 	    }
+	    this.Box = true;
 	};
 	
 	
@@ -74,20 +69,20 @@ function main()
 	{
 	    Para = new newPara();
 	    var gui = new dat.GUI();
-	    gui.addColor(Para, 'color').onChange(setValue);
+	    //gui.addColor(Para, 'color').onChange(setValue);
 	    //gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    //gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
-	    gui.add(Para, 'apply');
+	    //gui.add(Para, 'apply');
 	};
 		
 	//設定更新処理
 	function setValue()
 	{
 	    isovalue = Para.isovalue;
-	    Color = Para.color;
+	    //Color = Para.color;
 	    
 	    if(Para.Box)
 	    {
