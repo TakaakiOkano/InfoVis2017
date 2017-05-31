@@ -9,6 +9,7 @@ function main()
         enableAutoResize: false
     });
 
+    /*
     var bounds = Bounds( volume );
     screen.scene.add( bounds );
 
@@ -30,62 +31,80 @@ function main()
 	    camera_position:{type: 'v3',value: screen.camera.position}
 	}
     });
+*/
 
-
-    //GUIパラメータの準備
-    var sampleSquare = function()
+    setup();
+    
+    function setup()
     {
-	this.color = "#ff0000";
-	this.isovalue = 128;
-	this.apply = function()
-	{
-	    screen.scene.remove( surfaces );
-	    surfaces = Isosurfaces( volume, isovalue, Color );
-	    screen.scene.add( surfaces );
-	}
-	this.Lambertian = function()
-	{
-	    screen.scene.remove( light );
-	}
-	this.Phong = function()
-	{
-	    screen.scene.add( light );
-	    
-	    var geometry = new THREE.Geometry();
-	    var material = new THREE.ShaderMaterial({
-		vertexColors: THREE.VertexColors,
-		vertexShader: document.getElementById('phone.vert').text,
-		fragmentShader: document.getElementById('phone.frag').text,
-		uniforms:
-		{
-		    light_position: {type: 'v3', value: light.position}
-		    camera_position:{type: 'v3', value: screen.camera.position}
-		}
-	    });
-	}
-	this.Box = true;
-    };
-    
-    
-    //GUI表示
-    window.onload = function()
-    {
-	square = new sampleSquare();
-	var gui = new dat.GUI();
-	gui.addColor(square, 'color').onChange(setValue);
-	gui.add(square, 'isovalue', 0, 255).step(1).onChange(setValue);
-	gui.add(square, 'apply');
-	gui.add(square, 'Lambertian');
-	gui.add(square, 'Phong');
-	gui.add(square, 'Box').onChange(setValue);
-    };
+	var Color = "#ff0000";
+	var surfaces = Isosurfaces( volume, 128, Color );
+	screen.scene.add( surfaces );
+	
+	var bounds = Bounds( volume );
+	screen.scene.add( bounds );
+	
+	var light = new THREE.PointLight();
+	light.position.set( 0, 0, 5 );
 
-    
-//設定更新処理
+	var isovalue;
+	
+	//GUIパラメータの準備
+	var newPara = function()
+	{
+	    this.color = "#ff0000";
+	    this.isovalue = 128;
+	    //applyボタン
+	    this.apply = function()
+	    {
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color );
+		screen.scene.add( surfaces );
+	    }
+	    //Lambertianボタン
+	    this.Lambertian = function()
+	    {
+		screen.scene.remove( light );
+	    }
+	    //Phongボタン
+	    this.Phong = function()
+	    {
+		screen.scene.add( light );
+		
+		var geometry = new THREE.Geometry();
+		var material = new THREE.ShaderMaterial({
+		    vertexColors: THREE.VertexColors,
+		    vertexShader: document.getElementById('phone.vert').text,
+		    fragmentShader: document.getElementById('phone.frag').text,
+		    uniforms:
+		    {
+			light_position: {type: 'v3', value: light.position}
+			camera_position:{type: 'v3', value: screen.camera.position}
+		    }
+		});
+	    }
+	    this.Box = true;
+	};
+	
+	
+	//GUI表示
+	window.onload = function()
+	{
+	    Para = new newPara();
+	    var gui = new dat.GUI();
+	    gui.addColor(Para, 'color').onChange(setValue);
+	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
+	    gui.add(Para, 'apply');
+	    gui.add(Para, 'Lambertian');
+	    gui.add(Para, 'Phong');
+	    gui.add(Para, 'Box').onChange(setValue);
+	};
+		
+	//設定更新処理
 	function setValue()
 	{
-	    isovalue = square.isovalue;
-	    Color = square.color;
+	    isovalue = Para.isovalue;
+	    Color = Para.color;
 	    
 	    if(square.Box) {
 		screen.scene.add( bounds );
@@ -94,14 +113,16 @@ function main()
 		screen.scene.remove( bounds );
 	    }
 	}
-    
-    //マウス
-    document.addEventListener( 'mousemove', function() {
+	
+	//マウス
+	document.addEventListener( 'mousemove', function() {
         screen.light.position.copy( screen.camera.position );
-    });
-    //リサイズ
-    window.addEventListener( 'resize', function() {
+	});
+	//リサイズ
+	window.addEventListener( 'resize', function() {
         screen.resize( [ window.innerWidth, window.innerHeight ] );
-    });
+	});
+	
+    }
     screen.loop();
 }
