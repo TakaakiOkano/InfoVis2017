@@ -34,6 +34,8 @@ function main()
 */
 
     setup();
+
+    screen.loop();
     
     function setup()
     {
@@ -61,11 +63,12 @@ function main()
 		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
 	    }
-	    //Lambertianボタン
+	   /* //Lambertianボタン
 	    this.Lambertian = function()
 	    {
 		screen.scene.remove( light );
 	    }
+	   */
 	    //Phongボタン
 	    this.Phong = function()
 	    {
@@ -106,7 +109,8 @@ function main()
 	    isovalue = Para.isovalue;
 	    Color = Para.color;
 	    
-	    if(square.Box) {
+	    if(square.Box)
+	    {
 		screen.scene.add( bounds );
 	    }
 	    else {
@@ -124,5 +128,4 @@ function main()
 	});
 	
     }
-    screen.loop();
 }
