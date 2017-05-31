@@ -27,20 +27,18 @@ function main()
 	isovalue = 128;
 	var surfaces = Isosurfaces( volume, isovalue, Color );
 	screen.scene.add( surfaces );
-	var checkbox = true;
-	
+
 	//GUIパラメータの準備
 	var newPara = function()
 	{
 	    //this.color = "#ff0000";
 	    this.isovalue = 128;
 	   
-	   /* //Lambertianボタン
+	    //Lambertianボタン
 	    this.Lambertian = function()
 	    {
 		screen.scene.remove( light );
 	    }
-	   */
 
 	    //Phongボタン
 	    this.Phong = function()
@@ -61,7 +59,7 @@ function main()
 	
 	    }
 	    
-	    this.Box = true;
+	    this.Box = false;
 
 	    //applyボタン
 	    this.apply = function()
@@ -69,25 +67,17 @@ function main()
 		screen.scene.remove( surfaces );
 		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
-		if(checkbox)
-		{
-		    screen.scene.add( bounds );
-		}
-		else {
-		    screen.scene.remove( bounds );
-		}
 	    }
 	};
-	
 	
 	//GUI表示
 	window.onload = function()
 	{
 	    Para = new newPara();
 	    var gui = new dat.GUI();
-	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベント
+	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
-	    //gui.add(Para, 'Lambertian');
+	    gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'apply');
@@ -97,7 +87,13 @@ function main()
 	function setValue()
 	{
 	    isovalue = Para.isovalue;
-	    checkbox = Para.box;
+	    if(Para.Box)
+	    {
+		screen.scene.add( bounds );
+	    }
+	    else {
+		screen.scene.remove( bounds );
+	    }
 	}
 	
 	//マウス
