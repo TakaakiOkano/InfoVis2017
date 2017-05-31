@@ -27,6 +27,7 @@ function main()
 	isovalue = 128;
 	var surfaces = Isosurfaces( volume, isovalue, Color );
 	screen.scene.add( surfaces );
+	var checkbox = true;
 	
 	//GUIパラメータの準備
 	var newPara = function()
@@ -40,6 +41,7 @@ function main()
 		screen.scene.remove( light );
 	    }
 	   */
+
 	    //Phongボタン
 	    this.Phong = function()
 	    {
@@ -58,8 +60,20 @@ function main()
 		});
 	
 	    }
-	    this.Box = true;
-
+	    
+	    //this.Box = true;
+	    this.box = function()
+	    {
+	    if(checkbox)
+	    {
+		screen.scene.add( bounds );
+	    }
+		else {
+		screen.scene.remove( bounds );
+	    }
+	    }
+	    
+	    //applyボタン
 	    this.apply = function()
 	    {
 		screen.scene.remove( surfaces );
@@ -74,8 +88,7 @@ function main()
 	{
 	    Para = new newPara();
 	    var gui = new dat.GUI();
-	    //gui.addColor(Para, 'color').onChange(setValue);
-	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
+	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベント
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    //gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
@@ -83,19 +96,11 @@ function main()
 	    gui.add(Para, 'apply');
 	};
 		
-	//設定更新処理
+	//変更時の処理
 	function setValue()
 	{
 	    isovalue = Para.isovalue;
-	    //Color = Para.color;
-	    
-	    if(Para.Box)
-	    {
-		screen.scene.add( bounds );
-	    }
-	    else {
-		screen.scene.remove( bounds );
-	    }
+	    checkbox = Para.box;
 	}
 	
 	//マウス
