@@ -75,8 +75,8 @@ function main()
 	    Para = new newPara();
 	    var gui = new dat.GUI();
 	    //gui.addColor(Para, 'color').onChange(setValue);
-	    //gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
-	    gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
+	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
+	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    //gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
