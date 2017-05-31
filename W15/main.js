@@ -62,7 +62,7 @@ function main()
 	    this.apply = function()
 	    {
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color );
+		surfaces = Isosurfaces( volume, this.isovalue, Color );
 		screen.scene.add( surfaces );
 	    }
 	};
