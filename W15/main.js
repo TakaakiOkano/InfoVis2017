@@ -9,30 +9,6 @@ function main()
         enableAutoResize: false
     });
 
-    /*
-    var bounds = Bounds( volume );
-    screen.scene.add( bounds );
-
-    var light = new THREE.PointLight();
-    light.position.set( 0, 0, 5 );
-    screen.scene.add( light );
-
-    var isovalue = 128;
-    var surfaces = Isosurfaces( volume, isovalue );
-    screen.scene.add( surfaces );
-
-    var geometry = new THREE.Geometry();
-    var material = new THREE.ShaderMaterial({
-	vertexColors: THREE.VertexColors,              //色付け
-	vertexShader: document.getElementById('phong.vert').text,   //vertexshader割り当て
-	fragmentShader: document.getElementById('phong.frag').text,
-	uniforms: {
-	    light_position: {type: 'v3', value: light.position},
-	    camera_position:{type: 'v3',value: screen.camera.position}
-	}
-    });
-*/
-
     setup();
 
     screen.loop();
@@ -99,7 +75,8 @@ function main()
 	    Para = new newPara();
 	    var gui = new dat.GUI();
 	    gui.addColor(Para, 'color').onChange(setValue);
-	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
+	    //gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
+	    gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    //gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
