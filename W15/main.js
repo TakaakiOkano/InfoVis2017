@@ -98,7 +98,7 @@ function main()
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);
 	    gui.add(Para, 'apply');
-	    gui.add(Para, 'Lambertian');
+	    //gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
 	};
