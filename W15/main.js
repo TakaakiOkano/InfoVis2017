@@ -54,11 +54,12 @@ function main()
 	    var geometry = new THREE.Geometry();
 	    var material = new THREE.ShaderMaterial({
 		vertexColors: THREE.VertexColors,
-		vertexShader: document.getElementById('gouraud2.vert').text,
-		fragmentShader: document.getElementById('gouraud2.frag').text,
+		vertexShader: document.getElementById('phone.vert').text,
+		fragmentShader: document.getElementById('phone.frag').text,
 		uniforms:
 		{
 		    light_position: {type: 'v3', value: light.position}
+		    camera_position:{type: 'v3', value: screen.camera.position}
 		}
 	    });
 	}
