@@ -62,12 +62,23 @@ function main()
 	    //枠のチェック
 	    this.Box = false;
 
-	    //applyボタン
+	    //Applyボタン
 	    this.apply = function()
 	    {
 		screen.scene.remove( surfaces );
 		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
+	    }
+
+	    this.reset = function()
+	    {
+		this.color = "#ff0000";
+		this.isovalue = 128;
+		this.Box = false;
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color );
+		screen.scene.add( surfaces );
+		screen.scene.remove( light );
 	    }
 	};
 	
@@ -76,13 +87,14 @@ function main()
 	{
 	    Para = new newPara();
 	    var gui = new dat.GUI();
-	    gui.addColor(Para, 'color').onChange(setValue);
-	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
+	    gui.addColor(Para, 'Color').onChange(setValue);
+	    gui.add(Para, 'Isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    gui.add(Para, 'Box').onChange(setValue);
-	    gui.add(Para, 'apply');
+	    gui.add(Para, 'Apply');
+	    gui.add(Para, 'Reset');
 	};
 		
 	//変更時の処理
