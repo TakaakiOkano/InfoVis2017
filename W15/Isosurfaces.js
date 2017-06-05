@@ -86,10 +86,11 @@ function Isosurfaces( volume, isovalue )
     for ( var i = 0; i < RESOLUTION; i++ )
     {
 	var S = i / (RESOLUTION-1); // [0,1]
-	var R = Math.max( Math.cos( ( S - 1.0 ) * Math.PI ), 0.0 );
-	var G = Math.max( Math.cos( ( S - 0.5 ) * Math.PI ), 0.0 );
-	var B = Math.max( Math.cos( S * Math.PI ), 0.0 );
-	var color = new THREE.Color( R, G, B );
+	//var R = Math.max( Math.cos( ( S - 1.0 ) * Math.PI ), 0.0 );
+	//var G = Math.max( Math.cos( ( S - 0.5 ) * Math.PI ), 0.0 );
+	//var B = Math.max( Math.cos( S * Math.PI ), 0.0 );
+	//var color = new THREE.Color( R, G, B );
+	var color = new THREE.Color( Color );
 	cmap.push( [ S, '0x' + color.getHexString() ] );
     }
         
