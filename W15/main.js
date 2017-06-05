@@ -63,14 +63,14 @@ function main()
 	    this.Box = false;
 
 	    //Applyボタン
-	    this.apply = function()
+	    this.Apply = function()
 	    {
 		screen.scene.remove( surfaces );
 		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
 	    }
 
-	    this.reset = function()
+	    this.Reset = function()
 	    {
 		this.color = "#ff0000";
 		this.isovalue = 128;
