@@ -31,7 +31,7 @@ function main()
 	//GUIパラメータの準備
 	var newPara = function()
 	{
-	    //this.color = "#ff0000";
+	    this.color = "#ff0000";
 	    this.isovalue = 128;
 	   
 	    //Lambertianボタン
@@ -76,6 +76,7 @@ function main()
 	{
 	    Para = new newPara();
 	    var gui = new dat.GUI();
+	    gui.addColor(square, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    gui.add(Para, 'Lambertian');
@@ -88,6 +89,8 @@ function main()
 	function setValue()
 	{
 	    isovalue = Para.isovalue;
+	    Color = Para.color;
+
 	    if(Para.Box)
 	    {
 		screen.scene.add( bounds );
