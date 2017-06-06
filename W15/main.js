@@ -59,7 +59,7 @@ function main()
 		});
 	
 	    }
-
+/*
 	    this.Toon = function()
 	    {
 		screen.scene.add( light );
@@ -78,6 +78,7 @@ function main()
 
 
 	    }
+*/
 
 	    //枠のチェック
 	    this.Box = false;
@@ -112,7 +113,7 @@ function main()
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
-	    gui.add(Para, 'Toon');
+	    //gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'Apply');
 	    gui.add(Para, 'Reset');
