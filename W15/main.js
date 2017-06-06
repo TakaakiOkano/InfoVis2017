@@ -20,7 +20,6 @@ function main()
 	
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
-	screen.scene.add( light );///
 	
 	var Color = "#ff0000";
 	
@@ -38,24 +37,13 @@ function main()
 	    //Lambertianボタン
 	    this.Lambertian = function()
 	    {
-		//screen.scene.remove( light );
-			
-		var geometry = new THREE.Geometry();
-		var material = new THREE.ShaderMaterial({
-		    vertexColors: THREE.VertexColors,
-		    vertexShader: document.getElementById('lambertian.vert').text,
-		    fragmentShader: document.getElementById('lambertian.frag').text,
-		    uniforms:
-		    {
-			light_position: {type: 'v3', value: light.position},
-		    }
-		});
+		screen.scene.remove( light );
 	    }
 
 	    //Phongボタン
 	    this.Phong = function()
 	    {
-		//screen.scene.add( light );
+		screen.scene.add( light );
 		
 		var geometry = new THREE.Geometry();
 		var material = new THREE.ShaderMaterial({
