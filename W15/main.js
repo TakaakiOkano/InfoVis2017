@@ -47,7 +47,7 @@ function main()
 		screen.scene.add( light );
 		//var geometry = new THREE.Geometry();
 		var geometry = volume;
-		var material = new THREE.ShaderMaterial({
+		var surfaces.material = new THREE.ShaderMaterial({
 		    vertexColors: THREE.VertexColors,
 		    vertexShader: document.getElementById('phong.vert').text,
 		    fragmentShader: document.getElementById('phong.frag').text,
@@ -57,7 +57,6 @@ function main()
 			camera_position:{type: 'v3', value: screen.camera.position}
 		    }
 		});
-		volume = new THREE.Mesh(geometry, material)
 	    }
 /*
 	    this.Toon = function()
