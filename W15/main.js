@@ -59,6 +59,25 @@ function main()
 	
 	    }
 
+	    this.Toon = function()
+	    {
+		screen.scene.add( light );
+		
+		var geometry = new THREE.Geometry();
+		var material = new THREE.ShaderMaterial({
+		    vertexColors: THREE.VertexColors,
+		    vertexShader: document.getElementById('phone2.vert').text,
+		    fragmentShader: document.getElementById('phone2.frag').text,
+		    uniforms:
+		    {
+			light_position: {type: 'v3', value: light.position},
+			camera_position:{type: 'v3', value: screen.camera.position}
+		    }
+		});
+
+
+	    }
+
 	    //枠のチェック
 	    this.Box = false;
 
@@ -92,6 +111,7 @@ function main()
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
+	    gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'Apply');
 	    gui.add(Para, 'Reset');
