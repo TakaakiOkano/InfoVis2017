@@ -20,6 +20,7 @@ function main()
 	
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
+	screen.scene.add( light );///
 	
 	var Color = "#ff0000";
 	
@@ -37,7 +38,18 @@ function main()
 	    //Lambertianボタン
 	    this.Lambertian = function()
 	    {
-		screen.scene.remove( light );
+		//screen.scene.remove( light );
+			
+		var geometry = new THREE.Geometry();
+		var material = new THREE.ShaderMaterial({
+		    vertexColors: THREE.VertexColors,
+		    vertexShader: document.getElementById('lambertian.vert').text,
+		    fragmentShader: document.getElementById('lambertian.frag').text,
+		    uniforms:
+		    {
+			light_position: {type: 'v3', value: light.position},
+		    }
+		});
 	    }
 
 	    //Phongボタン
@@ -58,10 +70,10 @@ function main()
 		});
 	
 	    }
-
+/*
 	    this.Toon = function()
 	    {
-		//screen.scene.add( light );
+		screen.scene.add( light );
 		
 		var geometry = new THREE.Geometry();
 		var material = new THREE.ShaderMaterial({
@@ -78,7 +90,7 @@ function main()
 
 	    }
 
-
+*/
 	    //枠のチェック
 	    this.Box = false;
 
@@ -112,7 +124,7 @@ function main()
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
-	    gui.add(Para, 'Toon');
+	    //gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'Apply');
 	    gui.add(Para, 'Reset');
