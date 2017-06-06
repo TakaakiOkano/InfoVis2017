@@ -43,7 +43,7 @@ function main()
 	    //Phongボタン
 	    this.Phong = function()
 	    {
-		screen.scene.add( light );
+		//screen.scene.add( light );
 		
 		var geometry = new THREE.Geometry();
 		var material = new THREE.ShaderMaterial({
@@ -61,7 +61,7 @@ function main()
 
 	    this.Toon = function()
 	    {
-		screen.scene.add( light );
+		//screen.scene.add( light );
 		
 		var geometry = new THREE.Geometry();
 		var material = new THREE.ShaderMaterial({
