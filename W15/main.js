@@ -56,7 +56,7 @@ function main()
 			camera_position:{type: 'v3', value: screen.camera.position}
 		    }
 		});
-	
+		volume = new THREE.Mesh(geometry, material)
 	    }
 /*
 	    this.Toon = function()
