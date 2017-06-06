@@ -25,6 +25,11 @@ function main()
 	
 	var isovalue;
 	isovalue = 128;
+
+	//var geometry=new THREE.Geometry();
+	//var material =new THREE.MeshLambertMaterial();
+	
+	//IsosurfacesではTHREE.Mesh(Material,Geometry)が帰ってきている
 	var surfaces = Isosurfaces( volume, isovalue, Color );
 	screen.scene.add( surfaces );
 
@@ -46,8 +51,8 @@ function main()
 		//ライトを消してつけているだけ
 		screen.scene.add( light );
 		//var geometry = new THREE.Geometry();
-		var geometry = volume;
-		var surfaces.material = new THREE.ShaderMaterial({
+		var geometry = new THREE.Geometry();
+		var material = new THREE.ShaderMaterial({
 		    vertexColors: THREE.VertexColors,
 		    vertexShader: document.getElementById('phong.vert').text,
 		    fragmentShader: document.getElementById('phong.frag').text,
@@ -57,6 +62,7 @@ function main()
 			camera_position:{type: 'v3', value: screen.camera.position}
 		    }
 		});
+		//volume = new THREE.Mesh(geometry, material)
 	    }
 /*
 	    this.Toon = function()
@@ -121,7 +127,9 @@ function main()
 	//変更時の処理
 	function setValue()
 	{
+	    //isovalue値
 	    isovalue = Para.isovalue;
+	    //color値
 	    Color = Para.color;
 
 	    if(Para.Box)
