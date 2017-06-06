@@ -19,8 +19,7 @@ function main()
 	//screen.scene.add( bounds );
 	
 	var light = new THREE.PointLight();
-	//light.position.set( 0, 0, 5 );
-	light.position.set( 5, 5, 5 );
+	light.position.set( 0, 0, 5 );
 	
 	var Color = "#ff0000";
 	
