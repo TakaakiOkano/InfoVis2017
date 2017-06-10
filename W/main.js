@@ -39,6 +39,14 @@ function main()
 	    this.color = "#ff0000";
 	    this.isovalue = 128;
 	   
+	    //Applyボタン
+	    this.Apply = function()
+	    {
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color );
+		screen.scene.add( surfaces );
+	    }
+
 	    this.light = false;
 	 
 /*
@@ -65,13 +73,6 @@ function main()
 	    //枠のチェック
 	    this.Box = false;
 
-	    //Applyボタン
-	    this.Apply = function()
-	    {
-		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color );
-		screen.scene.add( surfaces );
-	    }
 	};
 	
 	//GUI表示
@@ -81,10 +82,11 @@ function main()
 	    var gui = new dat.GUI();
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
+	    gui.add(Para, 'Apply');
 	    gui.add(Para, 'light').onChange(setValue);
 	    //gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
-	    gui.add(Para, 'Apply');
+	   
 	};
 		
 	//変更時の処理
