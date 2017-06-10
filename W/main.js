@@ -15,9 +15,10 @@ function main()
     
     function setup()
     {
+	/* 枠 */
 	var bounds = Bounds( volume );
 	//screen.scene.add( bounds );
-	
+
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
 	
@@ -26,11 +27,11 @@ function main()
 	var isovalue;
 	isovalue = 128;
 
-	//var geometry=new THREE.Geometry();
-	//var material =new THREE.MeshLambertMaterial();
+	var geometry=new THREE.Geometry();
+	var material =new THREE.MeshBasicMaterial();
 	
-	//IsosurfacesではTHREE.Mesh(Material,Geometry)が帰ってきている
-	var surfaces = Isosurfaces( volume, isovalue, Color );
+	//IsosurfacesではTHREE.Mesh(material,geometry)が帰ってきている
+	var surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
 	screen.scene.add( surfaces );
 
 	//GUIパラメータの準備
@@ -39,37 +40,29 @@ function main()
 	    this.color = "#ff0000";
 	    this.isovalue = 128;
 	   
+
+	    //Lambertボタン
+	    this.Lambert = function()
+	    {
+		material =new THREE.MeshLambertMaterial();;
+	    }
+	    //Phongボタン
+	    this.Phong = function()
+	    {
+		material =new THREE.MeshPhongMaterial();;
+	    }
+
+
 	    //Applyボタン
 	    this.Apply = function()
 	    {
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color );
+		surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
 		screen.scene.add( surfaces );
 	    }
 
 	    this.light = false;
-	 
-/*
-	    this.Toon = function()
-	    {
-		screen.scene.add( light );
-		
-		var geometry = new THREE.Geometry();
-		var material = new THREE.ShaderMaterial({
-		    vertexColors: THREE.VertexColors,
-		    vertexShader: document.getElementById('phong2.vert').text,
-		    fragmentShader: document.getElementById('phong2.frag').text,
-		    uniforms:
-		    {
-			light_position: {type: 'v3', value: light.position},
-			camera_position:{type: 'v3', value: screen.camera.position}
-		    }
-		});
 
-
-	    }
-
-*/
 	    //枠のチェック
 	    this.Box = false;
 
@@ -82,9 +75,10 @@ function main()
 	    var gui = new dat.GUI();
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
+            gui.add(Para, 'Lambert' );
+	    gui.add(Para, 'Phong' );
 	    gui.add(Para, 'Apply');
 	    gui.add(Para, 'light').onChange(setValue);
-	    //gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
 	   
 	};
