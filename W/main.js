@@ -27,11 +27,11 @@ function main()
 	var isovalue;
 	isovalue = 128;
 
-	var geometry=new THREE.Geometry();
-	var material =new THREE.MeshLambertMaterial();
+	//var geometry=new THREE.Geometry();
+	//var material =new THREE.MeshLambertMaterial();
 	
 	//IsosurfacesではTHREE.Mesh(material,geometry)が帰ってきている
-	var surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
+	var surfaces = Isosurfaces( volume, isovalue, Color);
 	screen.scene.add( surfaces );
 
 	//GUIパラメータの準備
@@ -44,7 +44,7 @@ function main()
 	    this.Apply = function()
 	    {
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
+		surfaces = Isosurfaces( volume, isovalue, Color);
 		screen.scene.add( surfaces );
 	    }
 
