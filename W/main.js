@@ -3,7 +3,6 @@ function main()
     var volume = new KVS.LobsterData();
     var screen = new KVS.THREEScreen();
 
-
     screen.init( volume, {
         width: window.innerWidth,
         height: window.innerHeight,
@@ -27,11 +26,11 @@ function main()
 	var isovalue;
 	isovalue = 128;
 
-	var geometry=new THREE.Geometry();
-	var material =new THREE.MeshLambertMaterial();
+	//var geometry=new THREE.Geometry();
+	//var material =new THREE.MeshLambertMaterial();
 	
 	//IsosurfacesではTHREE.Mesh(Material,Geometry)が帰ってきている
-	var surfaces = Isosurfaces( volume, isovalue, Color,geometry,material);
+	var surfaces = Isosurfaces( volume, isovalue, Color );
 	screen.scene.add( surfaces );
 
 	//GUIパラメータの準備
@@ -40,6 +39,8 @@ function main()
 	    this.color = "#ff0000";
 	    this.isovalue = 128;
 	   
+	    this.light = false;
+
 	    //Lambertianボタン
 	    this.Lambertian = function()
 	    {
@@ -93,19 +94,8 @@ function main()
 	    this.Apply = function()
 	    {
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color ,geometry,material);
+		surfaces = Isosurfaces( volume, isovalue, Color );
 		screen.scene.add( surfaces );
-	    }
-
-	    this.Reset = function()
-	    {
-		this.color = "#ff0000";
-		this.isovalue = 128;
-		this.Box = false;
-		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color,geometry,material);
-		screen.scene.add( surfaces );
-		screen.scene.remove( light );
 	    }
 	};
 	
@@ -116,13 +106,13 @@ function main()
 	    var gui = new dat.GUI();
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
+	    gui.add(Para, 'light').onChange(setValue);
 	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
 	    gui.add(Para, 'Lambertian');
 	    gui.add(Para, 'Phong');
 	    //gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'Apply');
-	    gui.add(Para, 'Reset');
 	};
 		
 	//変更時の処理
@@ -132,6 +122,14 @@ function main()
 	    isovalue = Para.isovalue;
 	    //color値
 	    Color = Para.color;
+
+	    if(Para.light)
+	    {
+		screen.scene.add( light );
+	    }
+	    else {
+		screen.scene.remove( light );
+	    }
 
 	    if(Para.Box)
 	    {
