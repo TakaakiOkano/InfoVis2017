@@ -61,12 +61,6 @@ function main()
 		shadeflag=3;
 	    }
 
-	    //Toonボタン
-	    this.Toon = function()
-	    {
-		shadeflag=4;
-	    }
-
 	    //Applyボタン
 	    this.Apply = function()
 	    {
@@ -92,7 +86,6 @@ function main()
 	    gui.add(Para, 'Basic' );
             gui.add(Para, 'Lambert' );
 	    gui.add(Para, 'Phong' );
-	    gui.add(Para, 'Toon' );
 	    gui.add(Para, 'Apply');
 	    gui.add(Para, 'light').onChange(setValue);
 	    gui.add(Para, 'Box').onChange(setValue);
