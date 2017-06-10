@@ -40,32 +40,7 @@ function main()
 	    this.isovalue = 128;
 	   
 	    this.light = false;
-
-	    //Lambertianボタン
-	    this.Lambertian = function()
-	    {
-		screen.scene.remove( light );
-	    }
-
-	    //Phongボタン
-	    this.Phong = function()
-	    {
-		//ライトを消してつけているだけ
-		screen.scene.add( light );
-		//var geometry = new THREE.Geometry();
-		var geometry = new THREE.Geometry();
-		var material = new THREE.ShaderMaterial({
-		    vertexColors: THREE.VertexColors,
-		    vertexShader: document.getElementById('phong.vert').text,
-		    fragmentShader: document.getElementById('phong.frag').text,
-		    uniforms:
-		    {
-			light_position: {type: 'v3', value: light.position},
-			camera_position:{type: 'v3', value: screen.camera.position}
-		    }
-		});
-		//volume = new THREE.Mesh(geometry, material)
-	    }
+	 
 /*
 	    this.Toon = function()
 	    {
@@ -107,9 +82,6 @@ function main()
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
 	    gui.add(Para, 'light').onChange(setValue);
-	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
-	    gui.add(Para, 'Lambertian');
-	    gui.add(Para, 'Phong');
 	    //gui.add(Para, 'Toon');
 	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'Apply');
