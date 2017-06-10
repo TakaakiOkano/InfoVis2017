@@ -8,6 +8,17 @@ function Isosurfaces( volume, isovalue , Color, shadeflag)
 	var material = new THREE.MeshLambertMaterial();//
     }else if(shadeflag == 3){
 	var material = new THREE.MeshPhongMaterial();//
+    }else if(shadeflag == 4){
+	//var material = new THREE.MeshLambertMaterial();
+	var material = new THREE.ShaderMaterial({
+	    vertexColors: THREE.VertexColors,
+	    vertexShader: document.getElementById('gouraud.vert').text,
+	    fragmentShader: document.getElementById('gouraud.frag').text,
+	    uniforms: {
+		light_position: {type: 'v3',value: light.position},
+		camera_position: {type: 'v3',value: camera_left.position}
+	    }  
+	});
     }else{
 	var material = new THREE.MeshLambertMaterial();
     }
