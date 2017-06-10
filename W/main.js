@@ -49,7 +49,7 @@ function main()
 	    this.Phong = function()
 	    {
 		//ライトを消してつけているだけ
-		//screen.scene.add( light );
+		screen.scene.add( light );
 		//var geometry = new THREE.Geometry();
 		var geometry = new THREE.Geometry();
 		var material = new THREE.ShaderMaterial({
