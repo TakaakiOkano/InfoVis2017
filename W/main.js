@@ -27,7 +27,8 @@ function main()
 	var isovalue;
 	isovalue = 128;
 
-	var shadeflag=1;
+	var shadeflag;
+	shadeflag=1;
 
 	//var geometry=new THREE.Geometry();
 	//var material =new THREE.MeshLambertMaterial();
