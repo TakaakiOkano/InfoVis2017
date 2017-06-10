@@ -99,7 +99,7 @@ function main()
 	    gui.add(Para, 'light').onChange(setValue);
 	    gui.add(Para, 'light_position_x', -5, 5).onChange(setValue); 
 	    gui.add(Para, 'light_position_y', -5, 5).onChange(setValue); 
-	    gui.add(Para, 'light_position_z', -5, 5).onChange(setValue);
+	    gui.add(Para, 'light_position_z', -10, 10).onChange(setValue);
 	    gui.add(Para, 'Box').onChange(setValue);
 	   
 	};
