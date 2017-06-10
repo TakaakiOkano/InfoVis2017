@@ -17,7 +17,6 @@ function main()
     {
 	/* 枠 */
 	var bounds = Bounds( volume );
-	//screen.scene.add( bounds );
 
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
@@ -28,12 +27,9 @@ function main()
 	isovalue = 128;
 
 	var shadeflag;
-	shadeflag=1;
+	shadeflag=2;
 
-	//var geometry=new THREE.Geometry();
-	//var material =new THREE.MeshLambertMaterial();
-	
-	//IsosurfacesではTHREE.Mesh(material,geometry)が帰ってきている
+	//Isosurfaces
 	var surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
 	screen.scene.add( surfaces );
 
@@ -47,18 +43,27 @@ function main()
 	    this.Basic = function()
 	    {
 		shadeflag=1;
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
+		screen.scene.add( surfaces );
 	    }
 
 	    //Lambertボタン
 	    this.Lambert = function()
 	    {
 		shadeflag=2;
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
+		screen.scene.add( surfaces );
 	    }
 
 	    //Phongボタン
 	    this.Phong = function()
 	    {
 		shadeflag=3;
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
+		screen.scene.add( surfaces );
 	    }
 
 	    //Applyボタン
@@ -71,12 +76,11 @@ function main()
 
 	    this.light = false;
 
-	    //枠のチェック
 	    this.Box = false;
 
 	};
 	
-	//GUI表示
+	//GUI
 	window.onload = function()
 	{
 	    Para = new newPara();
