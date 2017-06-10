@@ -1,4 +1,4 @@
-function Isosurfaces( volume, isovalue , Color,shadeflag)   
+function Isosurfaces( volume, isovalue , Color, shadeflag)   
 {
     var geometry = new THREE.Geometry();//
 
@@ -9,7 +9,7 @@ function Isosurfaces( volume, isovalue , Color,shadeflag)
     }else if(shadeflag == 3){
 	var material = new THREE.MeshPhongMaterial();//
     }else{
-	var material = new THREE.MeshLambertMaterial();/
+	var material = new THREE.MeshLambertMaterial();
     }
     //var material = new THREE.MeshPhongMaterial();
     
