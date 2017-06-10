@@ -15,9 +15,9 @@ function main()
     
     function setup()
     {
+	/* 枠 */
 	var bounds = Bounds( volume );
-	//screen.scene.add( bounds );
-	
+
 	var light = new THREE.PointLight();
 	light.position.set( 0, 0, 5 );
 	
@@ -26,11 +26,11 @@ function main()
 	var isovalue;
 	isovalue = 128;
 
-	//var geometry=new THREE.Geometry();
-	//var material =new THREE.MeshLambertMaterial();
-	
-	//IsosurfacesではTHREE.Mesh(Material,Geometry)が帰ってきている
-	var surfaces = Isosurfaces( volume, isovalue, Color );
+	var shadeflag;
+	shadeflag=2;
+
+	//Isosurfaces
+	var surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
 	screen.scene.add( surfaces );
 
 	//GUIパラメータの準備
@@ -38,90 +38,70 @@ function main()
 	{
 	    this.color = "#ff0000";
 	    this.isovalue = 128;
-	   
-	    //Lambertianボタン
-	    this.Lambertian = function()
-	    {
-		screen.scene.remove( light );
-	    }
-
-	    //Phongボタン
-	    this.Phong = function()
-	    {
-		//ライトを消してつけているだけ
-		screen.scene.add( light );
-		//var geometry = new THREE.Geometry();
-		var geometry = new THREE.Geometry();
-		var material = new THREE.ShaderMaterial({
-		    vertexColors: THREE.VertexColors,
-		    vertexShader: document.getElementById('phong.vert').text,
-		    fragmentShader: document.getElementById('phong.frag').text,
-		    uniforms:
-		    {
-			light_position: {type: 'v3', value: light.position},
-			camera_position:{type: 'v3', value: screen.camera.position}
-		    }
-		});
-		//volume = new THREE.Mesh(geometry, material)
-	    }
-/*
-	    this.Toon = function()
-	    {
-		screen.scene.add( light );
-		
-		var geometry = new THREE.Geometry();
-		var material = new THREE.ShaderMaterial({
-		    vertexColors: THREE.VertexColors,
-		    vertexShader: document.getElementById('phong2.vert').text,
-		    fragmentShader: document.getElementById('phong2.frag').text,
-		    uniforms:
-		    {
-			light_position: {type: 'v3', value: light.position},
-			camera_position:{type: 'v3', value: screen.camera.position}
-		    }
-		});
-
-
-	    }
-
-*/
-	    //枠のチェック
-	    this.Box = false;
 
 	    //Applyボタン
 	    this.Apply = function()
 	    {
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
 		screen.scene.add( surfaces );
 	    }
 
-	    this.Reset = function()
+	    //Basicボタン
+	    this.Basic = function()
 	    {
-		this.color = "#ff0000";
-		this.isovalue = 128;
-		this.Box = false;
+		shadeflag=1;
 		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
 		screen.scene.add( surfaces );
-		screen.scene.remove( light );
 	    }
+
+	    //Lambertボタン
+	    this.Lambert = function()
+	    {
+		shadeflag=2;
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
+		screen.scene.add( surfaces );
+	    }
+
+	    //Phongボタン
+	    this.Phong = function()
+	    {
+		shadeflag=3;
+		screen.scene.remove( surfaces );
+		surfaces = Isosurfaces( volume, isovalue, Color,shadeflag);
+		screen.scene.add( surfaces );
+	    }
+
+	    this.light = false;
+
+	    /*this.light_position_x=0;
+	    this.light_position_y=0;
+	    this.light_position_z=5;*/
+	
+
+	    this.Box = false;
+
 	};
 	
-	//GUI表示
+	//GUI
 	window.onload = function()
 	{
 	    Para = new newPara();
 	    var gui = new dat.GUI();
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
-	    //gui.add(Para, 'isovalue', 0, 255).onChange(setValue);
-	    gui.add(Para, 'Lambertian');
-	    gui.add(Para, 'Phong');
-	    //gui.add(Para, 'Toon');
-	    gui.add(Para, 'Box').onChange(setValue);
 	    gui.add(Para, 'Apply');
-	    gui.add(Para, 'Reset');
+	    gui.add(Para, 'Basic' );
+            gui.add(Para, 'Lambert' );
+	    gui.add(Para, 'Phong' );
+	    gui.add(Para, 'light').onChange(setValue);
+	    /*gui.add(Para, 'light_position_x', -5, 5).onChange(setValue); 
+	    gui.add(Para, 'light_position_y', -5, 5).onChange(setValue); 
+	    gui.add(Para, 'light_position_z', -10, 10).onChange(setValue);*/
+	    gui.add(Para, 'Box').onChange(setValue);
+	   
 	};
 		
 	//変更時の処理
@@ -131,6 +111,19 @@ function main()
 	    isovalue = Para.isovalue;
 	    //color値
 	    Color = Para.color;
+
+	    /*light_position_x=Para.light_position_x;
+	    light_position_y=Para.light_position_y;
+	    light_position_z=Para.light_position_z;*/
+
+	    if(Para.light)
+	    {
+		//light.position.set( light_position_x, light_position_y, light_position_z );
+		screen.scene.add( light );
+	    }
+	    else {
+		screen.scene.remove( light );
+	    }
 
 	    if(Para.Box)
 	    {

@@ -1,8 +1,17 @@
-function Isosurfaces( volume, isovalue , Color)   //geometry,material
+function Isosurfaces( volume, isovalue , Color, shadeflag)   
 {
     var geometry = new THREE.Geometry();//
-    //var material = new THREE.MeshLambertMaterial();//
-    var material = new THREE.MeshPhongMaterial();
+
+    if(shadeflag == 1){
+	var material = new THREE.MeshBasicMaterial();//
+    }else if(shadeflag == 2){
+	var material = new THREE.MeshLambertMaterial();//
+    }else if(shadeflag == 3){
+	var material = new THREE.MeshPhongMaterial();//
+    }else{
+	var material = new THREE.MeshLambertMaterial();
+    }
+    //var material = new THREE.MeshPhongMaterial();
     
     var smin = volume.min_value;
     var smax = volume.max_value;
