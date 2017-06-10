@@ -48,23 +48,24 @@ function main()
 		screen.scene.add( surfaces );
 	    }
 
-	    //Basicボタン
+	    /*//Basicボタン
 	    this.Basic = function()
 	    {
 		material =new THREE.MeshBasicMaterial();
 	    }
-
+*/
 	    //Lambertボタン
 	    this.Lambert = function()
 	    {
 		material =new THREE.MeshLambertMaterial();
 	    }
+/*
 	    //Phongボタン
 	    this.Phong = function()
 	    {
 		material =new THREE.MeshPhongMaterial();
 	    }
-
+*/
 	    this.light = false;
 
 	    //枠のチェック
@@ -80,9 +81,9 @@ function main()
 	    gui.addColor(Para, 'color').onChange(setValue);
 	    gui.add(Para, 'isovalue', 0, 255).step(1).onChange(setValue);  //変更時のイベントonChange
 	    gui.add(Para, 'Apply');
-	    gui.add(Para, 'Basic' );
+	    //gui.add(Para, 'Basic' );
             gui.add(Para, 'Lambert' );
-	    gui.add(Para, 'Phong' );
+	    //gui.add(Para, 'Phong' );
 	    gui.add(Para, 'light').onChange(setValue);
 	    gui.add(Para, 'Box').onChange(setValue);
 	   
