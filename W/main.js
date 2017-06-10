@@ -28,7 +28,7 @@ function main()
 	isovalue = 128;
 
 	var geometry=new THREE.Geometry();
-	var material =new THREE.MeshBasicMaterial();
+	var material =new THREE.MeshLambertMaterial();
 	
 	//IsosurfacesではTHREE.Mesh(material,geometry)が帰ってきている
 	var surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
