@@ -52,26 +52,17 @@ function main()
 	    this.Basic = function()
 	    {
 		material =new THREE.MeshBasicMaterial();
-		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
-		screen.scene.add( surfaces );
 	    }
 
 	    //Lambertボタン
 	    this.Lambert = function()
 	    {
 		material =new THREE.MeshLambertMaterial();
-		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
-		screen.scene.add( surfaces );
 	    }
 	    //Phongボタン
 	    this.Phong = function()
 	    {
 		material =new THREE.MeshPhongMaterial();
-		screen.scene.remove( surfaces );
-		surfaces = Isosurfaces( volume, isovalue, Color, geometry, material);
-		screen.scene.add( surfaces );
 	    }
 
 	    this.light = false;
