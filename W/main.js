@@ -76,6 +76,11 @@ function main()
 
 	    this.light = false;
 
+	    this.light_position_x=0;
+	    this.light_position_y=0;
+	    this.light_position_z=5;
+	
+
 	    this.Box = false;
 
 	};
@@ -92,6 +97,9 @@ function main()
             gui.add(Para, 'Lambert' );
 	    gui.add(Para, 'Phong' );
 	    gui.add(Para, 'light').onChange(setValue);
+	    gui.add(Para, 'light_position_x', 0, 5).onChange(setValue); 
+	    gui.add(Para, 'light_position_y', 0, 5).onChange(setValue); 
+	    gui.add(Para, 'light_position_z', 0, 5).onChange(setValue);
 	    gui.add(Para, 'Box').onChange(setValue);
 	   
 	};
@@ -104,8 +112,13 @@ function main()
 	    //color値
 	    Color = Para.color;
 
+	    light_position_x=Para.light_position_x;
+	    light_position_y=Para.light_position_y;
+	    light_position_z=Para.light_position_z;
+
 	    if(Para.light)
 	    {
+		light.position.set( light_position_x, light_position_y, light_position_y );
 		screen.scene.add( light );
 	    }
 	    else {
