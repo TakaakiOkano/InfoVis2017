@@ -1,7 +1,16 @@
-function Isosurfaces( volume, isovalue , Color)   
+function Isosurfaces( volume, isovalue , Color,shadeflag)   
 {
     var geometry = new THREE.Geometry();//
-    var material = new THREE.MeshLambertMaterial();//
+
+    if(shadeflag =< 1){
+	var material = new THREE.MeshBasicMaterial();//
+    }
+    if(shadeflag == 2){
+	var material = new THREE.MeshLambertMaterial();//
+    }
+    if(shadeflag >= 3){
+	var material = new THREE.MeshPhongMaterial();//
+    }
     //var material = new THREE.MeshPhongMaterial();
     
     var smin = volume.min_value;
