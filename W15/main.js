@@ -9,11 +9,11 @@ function main()
         enableAutoResize: false
     });
 
-    setup();
+    changePara();
 
     screen.loop();
     
-    function setup()
+    function changePara()
     {
 	/* 枠 */
 	var bounds = Bounds( volume );
